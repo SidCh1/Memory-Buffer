@@ -226,7 +226,7 @@ class Long_Link:
             
     def check_swapping_conditions(self):
         """checks whether the underlying links exist"""
-        print(self.link1.is_working, self.link2.is_working)
+        #print(self.link1.is_working, self.link2.is_working)
         if self.link1.is_working and self.link2.is_working:
             self.ready_for_swapping = True
         else: 
@@ -241,7 +241,7 @@ class Long_Link:
             self.link1.turn_off()
             self.link2.turn_off()
             if np.random.random() < self.swapping_probability:
-                print("swapping successful")
+                #print("swapping successful")
                 self.turn_on()    
 
     def turn_on(self):
@@ -257,7 +257,74 @@ class Long_Link:
             self.is_working = False
             self.memoryL.free_memory()
             self.memoryR.free_memory()
-            """Note: if swapping was successfull, memories need to get occupied again."""
+            """Note: if swapping was successful, memories need to get occupied again."""
         else:
             print("Something went wrong, tried to turn off a non working link.")
+
+
+
+#######################################
+# METHODS FOR CREATING REPEATER CHAIN #
+#######################################
+
+
+def create_elementary_links(memory_numbers = np.full(8,1),
+                            generation_probability=1):
+    """creates a vector of elementary links with a distribution of memory_buffers"""
+
+    if not len(memory_numbers) in [4,8,16,32,64]:
+        print("Check length of memory_numbers, length is not appropriate for doubling scheme")
+
+
+    linklist = []
+
+    for i in range(int(len(memory_numbers)/2)):
+        memoryL = Memory(buffer_space=memory_numbers[2*i])
+        memoryR = Memory(buffer_space=memory_numbers[2*i+1])
+        #print(memory_numbers[2*i])
+        link = Elementary_Link(memoryL = memoryL, memoryR = memoryR,generation_probability=generation_probability)
+        linklist.append(link)
+
+    return(linklist)
+
+
+def create_long_links_doubling(linklist_short,
+                               swapping_probability=1):
+    """creates a vector of longer links from a list of shorter links, doubling scheme"""
+
+    if not len(linklist_short) in [2,4,8,16,32,64]:
+        print("Check length of memory_numbers, length is not appropriate for doubling scheme")
+
+    linklist = []
+
+    for i in range(int(len(linklist_short)/2)):
+        link1 = linklist_short[2*i]
+        link2 = linklist_short[2*i+1]
+        #print(memory_numbers[2*i])
+        link = Long_Link(link1=link1,link2=link2,swapping_probability=swapping_probability)
+        linklist.append(link)
+
+    return(linklist)
+
+    
+def create_chain_doubling(memory_numbers = np.full(8,1),
+                          generation_probability=1,
+                          swapping_probability=1):    
+    """creates a list of lists, where the first list element is a list of elementary links (step 1), the second list element is a list of longer links (step 2)..."""
+
+    links = []
+
+    linklist = create_elementary_links(memory_numbers=memory_numbers, generation_probability=generation_probability)
+    links.append(linklist)
+
+    while len(linklist) > 1:
+        linklist = create_long_links_doubling(linklist, swapping_probability=swapping_probability)
+        links.append(linklist)
+
+    return links
+
+
+################################
+# OPERATIONS ON REPEATER CHAIN #
+################################
 
