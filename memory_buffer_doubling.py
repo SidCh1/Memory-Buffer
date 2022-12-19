@@ -139,9 +139,9 @@ class Elementary_Link:
     """
 
     def __init__(self,
+                 memoryL,
+                 memoryR,
                  generation_probability=1,
-                 memoryL=Memory(),
-                 memoryR=Memory(),
                  ready_for_generation=False,
                  is_working=False):
         self.generation_probability = generation_probability
@@ -210,9 +210,9 @@ class Long_Link:
     """
 
     def __init__(self,
+                 link1,
+                 link2,
                  swapping_probability=1,
-                 link1=Elementary_Link(),
-                 link2=Elementary_Link(),
                  ready_for_swapping=False,
                  is_working=False):
         self.swapping_probability = swapping_probability
@@ -249,4 +249,15 @@ class Long_Link:
         self.is_working = True
         self.memoryL.occupy_memory()
         self.memoryR.occupy_memory()  
+
+
+    def turn_off(self):
+        """turns off existing link"""
+        if self.is_working:
+            self.is_working = False
+            self.memoryL.free_memory()
+            self.memoryR.free_memory()
+            """Note: if swapping was successfull, memories need to get occupied again."""
+        else:
+            print("Something went wrong, tried to turn off a non working link.")
 
