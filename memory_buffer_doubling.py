@@ -49,6 +49,7 @@ Ideas for later
 
 import numpy as np
 import statistics
+import scipy.special
 
 
 ################################################################
@@ -391,10 +392,6 @@ def create_chain_doubling(memory_numbers = np.full(8,1),
     return links
 
 
-################################
-# OPERATIONS ON REPEATER CHAIN #
-################################
-
 
 
 
@@ -407,26 +404,27 @@ def create_chain_doubling(memory_numbers = np.full(8,1),
 def get_statistics(memory_numbers = np.full(8,1),
                           generation_probability=1,
                           swapping_probability=1,
-                          number_of_repetitions=1):
+                          number_of_repetitions=100):
 
     waitingtimes = []
+    chains = []
 
-    chains = [ 
-        create_chain_doubling(memory_numbers = memory_numbers,
-                          generation_probability=generation_probability,
-                          swapping_probability=swapping_probability)
-        for __ in range(number_of_repetitions)]  
+    for __ in range(number_of_repetitions):
+        links = create_chain_doubling(memory_numbers = memory_numbers,generation_probability=generation_probability)
+        chain = Chain(links)
+        chains.append(chain)
 
     for chain in chains: 
-        waitingtime = count_timesteps(chain)
-        waitingtimes.append(waitingtime)
-
-
+        chain.find_waiting_time()
+        waitingtimes.append(chain.waiting_time)
+    #print(waitingtimes)
+ 
     mean = statistics.mean(waitingtimes)
     stdev = statistics.stdev(waitingtimes)
 
     print("memory_buffer distribution: ", memory_numbers)
-    print("waiting_time: \i $\pm$ \i" %(mean,stdev))
+    print("generation_probability: ", generation_probability , ", swapping_probability: ", swapping_probability)
+    print("waiting_time: ", mean, "+-", stdev)
 
     return [mean,stdev]
 
@@ -439,12 +437,18 @@ def get_statistics(memory_numbers = np.full(8,1),
 if __name__ == "__main__":
 
     """simulation parameters"""
-    memory_numbers = np.full(8,1),
-    generation_probability=1,
-    swapping_probability=1,
-    number_of_repetitions=25    
+    memory_numbers = [1,1,1,1,1,1,1,1]
+    generation_probability=0.5
+    swapping_probability=1
+    number_of_repetitions=100    
 
-    #get_statistics(memory_numbers = memory_numbers,
-                          #generation_probability=generation_probability,
-                          #swapping_probability=swapping_probability,
-                          #number_of_repetitions=number_of_repetitions)
+    get_statistics(memory_numbers = memory_numbers,
+                          generation_probability=generation_probability,
+                          swapping_probability=swapping_probability,
+                          number_of_repetitions=number_of_repetitions)
+
+    print("analytic calculation for swapping_probability = 1 and memory_buffer = 1 at every repeater station:")
+    n = 4
+    q = 1. - generation_probability
+    expval = sum([(-1)**(j + 1)*scipy.special.binom(n,j)/(1-q**j) for j in range (1,n+1)])
+    print("computed expectation value: ", expval)

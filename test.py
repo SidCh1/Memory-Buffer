@@ -1,5 +1,6 @@
 import memory_buffer_doubling as memb
 import scipy.special
+import numpy as np
 
 """Test of Memory"""
 #print("Test of Memory")
@@ -153,16 +154,33 @@ import scipy.special
 
 """Test of Class 'Chain' - Waiting Times"""
 print("Test of Class 'Chain' - Waiting Times")
-memory_numbers = [3,1,1,3,3,1,1,3]
-generation_probability=0.5
-links = memb.create_chain_doubling(memory_numbers = memory_numbers,generation_probability=generation_probability)
-chain = memb.Chain(links)
-chain.find_waiting_time()
-print("waiting time: ", chain.waiting_time)
+#memory_numbers = [3,1,1,3,3,1,1,3]
+#generation_probability=0.5
+#links = memb.create_chain_doubling(memory_numbers = memory_numbers,generation_probability=generation_probability)
+#chain = memb.Chain(links)
+#chain.find_waiting_time()
+#print("waiting time: ", chain.waiting_time)
+#n = 4
+#q = 1 - generation_probability
+#expval = sum([(-1)**(j + 1)*scipy.special.binom(n,j)/(1-q**j) for j in range (1,n)])
+#print("expval: ", expval)
+
+"""Test of statistics"""
+print("Test of statistics")
+memory_numbers = [1,1,1,1,1,1,1,1]
+generation_probability=0.2
+swapping_probability=1
+number_of_repetitions=1000
+e = memb.get_statistics(memory_numbers = memory_numbers,generation_probability=generation_probability, number_of_repetitions=number_of_repetitions,swapping_probability=swapping_probability)
+
+
 n = 4
 q = 1 - generation_probability
-expval = sum([(-1)**(j + 1)*scipy.special.binom(n,j)/(1-q**j) for j in range (1,n)])
-print("expval: ", expval)
+expval = sum([(-1)**(j + 1)*scipy.special.binom(n,j)/(1-q**j) for j in range (1,n+1)])
+print("computed expectation value: ", expval)
+
+
+
 
 
 
