@@ -404,13 +404,16 @@ def create_chain_doubling(memory_numbers = np.full(8,1),
 def get_statistics(memory_numbers = np.full(8,1),
                           generation_probability=1,
                           swapping_probability=1,
-                          number_of_repetitions=100):
+                          number_of_repetitions=100
+                          ):
 
     waitingtimes = []
     chains = []
 
     for __ in range(number_of_repetitions):
-        links = create_chain_doubling(memory_numbers = memory_numbers,generation_probability=generation_probability)
+        links = create_chain_doubling(memory_numbers = memory_numbers, 
+                generation_probability=generation_probability,
+                swapping_probability=swapping_probability)
         chain = Chain(links)
         chains.append(chain)
 
@@ -422,9 +425,9 @@ def get_statistics(memory_numbers = np.full(8,1),
     mean = statistics.mean(waitingtimes)
     stdev = statistics.stdev(waitingtimes)
 
-    print("memory_buffer distribution: ", memory_numbers)
-    print("generation_probability: ", generation_probability , ", swapping_probability: ", swapping_probability)
-    print("waiting_time: ", mean, "+-", stdev)
+    #print("memory_buffer distribution: ", memory_numbers)
+    #print("generation_probability: ", generation_probability , ", swapping_probability: ", swapping_probability)
+    #print("waiting_time: ", mean, "+-", stdev)
 
     return [mean,stdev]
 
@@ -438,8 +441,8 @@ if __name__ == "__main__":
 
     """simulation parameters"""
     memory_numbers = [1,1,1,1,1,1,1,1]
-    generation_probability=0.5
-    swapping_probability=1
+    generation_probability=0.01
+    swapping_probability=0.5
     number_of_repetitions=100    
 
     get_statistics(memory_numbers = memory_numbers,
