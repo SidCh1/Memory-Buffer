@@ -22,24 +22,34 @@ import numpy as np
 #print("full?", memory.full_status)
 
 """Test of Elementary Link"""
-#print("Test of Elementary Link")
-#elemlink = memb.Elementary_Link(memoryL = memb.Memory(buffer_space=3),memoryR = memb.Memory(buffer_space=2))
-#print("working? ", elemlink.is_working)
-#print("free memory space, L: ", elemlink.memoryL.buffer_space - elemlink.memoryL.occupied_buffer_space, "R: ", elemlink.memoryR.buffer_space - elemlink.memoryR.occupied_buffer_space)
-#elemlink.check_buffer_space()
-#print("ready for generation? ", elemlink.ready_for_generation)
-#elemlink.generation_attempt()
-#print("generation successful? ", elemlink.is_working)
-#print("free memory space, L: ", elemlink.memoryL.buffer_space - elemlink.memoryL.occupied_buffer_space, "R: ", elemlink.memoryR.buffer_space - elemlink.memoryR.occupied_buffer_space)
-#elemlink.check_buffer_space()
-#print("ready for generation? ", elemlink.ready_for_generation)
-#elemlink.turn_off()
-#print("free memory space, L: ", elemlink.memoryL.buffer_space - elemlink.memoryL.occupied_buffer_space, "R: ", elemlink.memoryR.buffer_space - elemlink.memoryR.occupied_buffer_space)
-#elemlink.turn_off()
-#print("ready for generation? ", elemlink.ready_for_generation)
-#print("working? ", elemlink.is_working)
-#elemlink.next_timestep()
-#print("working in next timestep? ", elemlink.is_working)
+print("Test of Elementary Link")
+elemlink = memb.Elementary_Link(generation_probability=1,memoryL = memb.Memory(buffer_space=3),memoryR = memb.Memory(buffer_space=2))
+print("working? ", elemlink.is_working, ", multiplicity: ", elemlink.multiplicity)
+print("free memory space, L: ", elemlink.memoryL.buffer_space - elemlink.memoryL.occupied_buffer_space, "R: ", elemlink.memoryR.buffer_space - elemlink.memoryR.occupied_buffer_space)
+elemlink.check_buffer_space()
+print("ready for generation? ", elemlink.ready_for_generation)
+elemlink.generation_attempt()
+print("generation successful? ", elemlink.is_working, ", multiplicity: ", elemlink.multiplicity)
+print("free memory space, L: ", elemlink.memoryL.buffer_space - elemlink.memoryL.occupied_buffer_space, "R: ", elemlink.memoryR.buffer_space - elemlink.memoryR.occupied_buffer_space)
+elemlink.check_buffer_space()
+print("ready for generation? ", elemlink.ready_for_generation)
+print("turn off")
+elemlink.turn_off()
+print("free memory space, L: ", elemlink.memoryL.buffer_space - elemlink.memoryL.occupied_buffer_space, "R: ", elemlink.memoryR.buffer_space - elemlink.memoryR.occupied_buffer_space)
+print("turn on")
+elemlink.turn_on() #
+print("free memory space, L: ", elemlink.memoryL.buffer_space - elemlink.memoryL.occupied_buffer_space, "R: ", elemlink.memoryR.buffer_space - elemlink.memoryR.occupied_buffer_space)
+elemlink.check_buffer_space()
+print("ready for generation? ", elemlink.ready_for_generation)
+elemlink.generation_attempt()
+print("generation successful? ", elemlink.is_working, ", multiplicity: ", elemlink.multiplicity)
+print("free memory space, L: ", elemlink.memoryL.buffer_space - elemlink.memoryL.occupied_buffer_space, "R: ", elemlink.memoryR.buffer_space - elemlink.memoryR.occupied_buffer_space)
+elemlink.check_buffer_space()
+print("ready for generation? ", elemlink.ready_for_generation)
+elemlink.generation_attempt()
+print("generation attempt, working? ", elemlink.is_working, ", multiplicity: ", elemlink.multiplicity)
+elemlink.next_timestep()
+print("working in next timestep? ", elemlink.is_working)
 
 
 
@@ -153,7 +163,7 @@ import numpy as np
 
 
 """Test of Class 'Chain' - Waiting Times"""
-print("Test of Class 'Chain' - Waiting Times")
+#print("Test of Class 'Chain' - Waiting Times")
 #memory_numbers = [3,1,1,3,3,1,1,3]
 #generation_probability=0.5
 #links = memb.create_chain_doubling(memory_numbers = memory_numbers,generation_probability=generation_probability)
@@ -166,18 +176,18 @@ print("Test of Class 'Chain' - Waiting Times")
 #print("expval: ", expval)
 
 """Test of statistics"""
-print("Test of statistics")
-memory_numbers = [1,1,1,1,1,1,1,1]
-generation_probability=0.2
-swapping_probability=1
-number_of_repetitions=1000
-e = memb.get_statistics(memory_numbers = memory_numbers,generation_probability=generation_probability, number_of_repetitions=number_of_repetitions,swapping_probability=swapping_probability)
+#print("Test of statistics")
+#memory_numbers = [1,1,1,1,1,1,1,1]
+#generation_probability=0.2
+#swapping_probability=1
+#number_of_repetitions=1000
+#e = memb.get_statistics(memory_numbers = memory_numbers,generation_probability=generation_probability, number_of_repetitions=number_of_repetitions,swapping_probability=swapping_probability)
 
 
-n = 4
-q = 1 - generation_probability
-expval = sum([(-1)**(j + 1)*scipy.special.binom(n,j)/(1-q**j) for j in range (1,n+1)])
-print("computed expectation value: ", expval)
+#n = 4
+#q = 1 - generation_probability
+#expval = sum([(-1)**(j + 1)*scipy.special.binom(n,j)/(1-q**j) for j in range (1,n+1)])
+#print("computed expectation value: ", expval)
 
 
 
