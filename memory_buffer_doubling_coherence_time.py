@@ -116,7 +116,7 @@ class Memory:
 
 
 
-class Link:
+#class Link:
     """Class modelling the status of a link.
     Intended usage: link can exist or not, has coherence time.
     Multiplicity of elementary_links or longer_links are recorded by containing links.
@@ -134,15 +134,15 @@ class Link:
         counts, how long the link exists already
     """
 
-    def __init__(self,
-                 memoryL,
-                 memoryR,
-                 coherence_time = 1):
-        self.memoryL = memoryL
-        self.memoryR = memoryR
-        self._is_working = False
-        self.coherence_time = coherence_time
-        self._time=0
+#    def __init__(self,
+#                 memoryL,
+#                 memoryR,
+#                 coherence_time = 1):
+#        self.memoryL = memoryL
+#        self.memoryR = memoryR
+#        self._is_working = False
+#        self.coherence_time = coherence_time
+#        self._time=0
 
 
 class Elementary_Link:
@@ -160,44 +160,47 @@ class Elementary_Link:
     ----------
     generation_probability: float
         Probability to generate a link.
-    is_working: bool
+    _is_working: bool
         States whether the link is generated or not
     memoryL, memoryR: Memory
         Memories on both sides of the link
-    ready_for_generation: bool
+    _ready_for_generation: bool
         States whether there is free memory space 
         such that a link can get generated.
-    multiplicity: int
+    _multiplicity: int
         as long as we have sufficiently much buffer space, we can have multiple parallel links (multiplexing).
+    coherence_time: int
+        number of time steps which the link survives
     """
 
     def __init__(self,
                  memoryL,
                  memoryR,
                  generation_probability=1,
-                 ready_for_generation=False,
-                 is_working=False,
-                 multiplicity = 0):
+                 coherence_time = 1):
         self.generation_probability = generation_probability
         self.memoryL = memoryL
         self.memoryR = memoryR
-        self.ready_for_generation = ready_for_generation
-        self.is_working = is_working
-        self.multiplicity = multiplicity
+        self.coherence_time = coherence_time
+        self._ready_for_generation = False
+        self._is_working = False
+        #self._multiplicity = 0
+        self._multiplicity_vec = []
+        
 
 
     def check_buffer_space(self):
         """checks whether there is enough memory buffer to generate a link"""
         #print(self.memoryL._full_status, self.memoryR._full_status)
         if not self.memoryL._full_status and not self.memoryR._full_status:
-            self.ready_for_generation = True
+            self._ready_for_generation = True
         else: 
-            self.ready_for_generation = False
+            self._ready_for_generation = False
 
     def generation_attempt(self):
         """attempts to generate an entangled link"""
         self.check_buffer_space()
-        if self.ready_for_generation:
+        if self._ready_for_generation:
             if np.random.random() < self.generation_probability:
                 #print("link generated")
                 self.turn_on()
@@ -205,28 +208,43 @@ class Elementary_Link:
 
     def turn_on(self):
         """mark, that link is working and occupy memory space"""
-        self.is_working = True
-        self.multiplicity +=1
+        self._is_working = True
+        #self._multiplicity +=1
+        self._multiplicity_vec.append(self.coherence_time)
         self.memoryL.occupy_memory()
         self.memoryR.occupy_memory()
 
 
     def turn_off(self):
         """turns off existing"""
-        if self.is_working:
-            self.multiplicity -= 1
+        if self._is_working:
+            #self._multiplicity -= 1
+            #self._multiplicity_vec.pop(0) 
             self.memoryL.free_memory()
             self.memoryR.free_memory()
             """Note: if swapping was successfull, memories need to get occupied again."""
-            if self.multiplicity == 0:
-                self.is_working = False
+            if len(self._multiplicity_vec) == 0:
+                self._is_working = False
         else:
             raise Exception("Something went wrong, tried to turn off a non working link.")
 
 
     def next_timestep(self):
-        if not self.is_working:
-            self.generation_attempt()
+        self.reduce_coherence_time()
+        #if not self._is_working:
+        self.generation_attempt()
+            
+    def reduce_coherence_time(self):
+        print(self._multiplicity_vec)
+        for i in range(len(self._multiplicity_vec)):
+            self._multiplicity_vec[i] -= 1
+        print(self._multiplicity_vec)
+        for j in range(self._multiplicity_vec.count(0)):
+            print("")
+            self._multiplicity_vec.pop(0) 
+            self.turn_off()
+        print(self._multiplicity_vec)
+        
 
 
 class Long_Link:
@@ -441,7 +459,8 @@ def create_chain_doubling(memory_numbers = np.full(8,1),
     linklist = create_elementary_links(memory_numbers=memory_numbers, generation_probability=generation_probability)
     links.append(linklist)
 
-    while len(linklist) > 1:
+    """len(linklist) reduces with factor 1/2 in every step"""
+    while len(linklist) > 1:  
         linklist = create_long_links_doubling(linklist, swapping_probability=swapping_probability)
         links.append(linklist)
 
