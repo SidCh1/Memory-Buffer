@@ -198,8 +198,8 @@ class Elementary_Link:
 
 
     def next_timestep(self):
-        if not self.is_working:
-            self.generation_attempt()
+        #if not self.is_working:
+        self.generation_attempt()
 
 
 class Long_Link:
@@ -449,7 +449,7 @@ def get_statistics(memory_numbers = np.full(8,1),
     for chain in chains: 
         chain.find_waiting_time()
         waitingtimes.append(chain.waiting_time)
-    #print(waitingtimes)
+    #print(waitingtimes, len(waitingtimes))
  
     mean = statistics.mean(waitingtimes)
     stdev = statistics.stdev(waitingtimes)
@@ -472,7 +472,7 @@ if __name__ == "__main__":
     memory_numbers = [1,1,1,1,1,1,1,1]
     generation_probability=0.001
     swapping_probability=0.5
-    number_of_repetitions=100    
+    number_of_repetitions=50    
 
     get_statistics(memory_numbers = memory_numbers,
                           generation_probability=generation_probability,
