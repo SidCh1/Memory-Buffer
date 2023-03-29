@@ -171,7 +171,7 @@ class Elementary_Link:
         as long as we have sufficiently much buffer space, we can have multiple parallel links (multiplexing).
     coherence_time: int
         number of time steps which the link survives
-    survivaltime_max: int
+    _survivaltime_max: int
         longest time that one link still survives
     """
 
@@ -188,7 +188,7 @@ class Elementary_Link:
         self._is_working = False
         #self._multiplicity = 0
         self._multiplicity_vec = []
-        self.survivaltime_max = 0
+        self._survivaltime_max = 0
         
 
 
@@ -214,7 +214,7 @@ class Elementary_Link:
         self._is_working = True
         #self._multiplicity +=1
         self._multiplicity_vec.append(self.coherence_time)
-        self.survivaltime_max = self.coherence_time
+        self._survivaltime_max = self.coherence_time
         self.memoryL.occupy_memory()
         self.memoryR.occupy_memory()
 
@@ -228,9 +228,9 @@ class Elementary_Link:
             self._multiplicity_vec.remove(turn_off_time)
             if len(self._multiplicity_vec) == 0:
                 self._is_working = False
-                self.survivaltime_max = 0
+                self._survivaltime_max = 0
             else:
-                self.survivaltime_max = max(self._multiplicity_vec)
+                self._survivaltime_max = max(self._multiplicity_vec)
         else:
             raise Exception("Something went wrong, tried to turn off a non working link.")
 
@@ -245,12 +245,12 @@ class Elementary_Link:
         if len(self._multiplicity_vec) > 0:
             for i in range(len(self._multiplicity_vec)):
                 self._multiplicity_vec[i] -= 1
-            self.survivaltime_max = max(self._multiplicity_vec)
+            self._survivaltime_max = max(self._multiplicity_vec)
             #print(self._multiplicity_vec)
             for j in range(self._multiplicity_vec.count(0)):
                 self.turn_off(turn_off_time=0)
         #else:
-            #self.survivaltime_max = 0
+            #self._survivaltime_max = 0
         #print(self._multiplicity_vec)
         
 
@@ -274,12 +274,12 @@ class Long_Link:
     link1, link2: Elementary_Link or Long_Link
     memoryL, memoryR: Memory
         Memories on both sides of the link
-    ready_for_swapping: bool
+    _ready_for_swapping: bool
         States whether the shorter links are generated 
         such that they can get swapped.
     multiplicity: int
         as long as we have sufficiently much buffer space, we can have multiple parallel links (multiplexing).
-    number_swapping_options: int
+    _number_swapping_options: int
     """
 
     def __init__(self,
@@ -291,37 +291,36 @@ class Long_Link:
         self.link2 = link2
         self.memoryL = self.link1.memoryL
         self.memoryR = self.link2.memoryR
-        self.ready_for_swapping = False
+        self._ready_for_swapping = False
         self._is_working = False
-        self.multiplicity = 0
-        self.number_swapping_options = 0
+        self._number_swapping_options = 0
         self._multiplicity_vec = []
-        self.survivaltime_max = 0
-        #self.coherence_time = 100
+        self._survivaltime_max = 0
+        self.coherence_time = 100
 
             
     def check_swapping_conditions(self):
         """checks whether the underlying links exist"""
         #print(self.link1._is_workin, self.link2._is_workin)
         if self.link1._is_working and self.link2._is_working:
-            self.ready_for_swapping = True
-            self.number_swapping_options = min(len(self.link1._multiplicity_vec),len(self.link2._multiplicity_vec))
+            self._ready_for_swapping = True
+            self._number_swapping_options = min(len(self.link1._multiplicity_vec),len(self.link2._multiplicity_vec))
             #print("multiplicities link1, link2: ", self.link1._multiplicity_vec,self.link2._multiplicity_vec)
-            #print("number_swapping_options: ", self.number_swapping_options)
+            #print("_number_swapping_options: ", self._number_swapping_options)
         else: 
-            self.ready_for_swapping = False  
-            self.number_swapping_options = 0
+            self._ready_for_swapping = False  
+            self._number_swapping_options = 0
 
 
 
     def swapping_attempt(self):
         """attempts to swap two entangled links"""
         self.check_swapping_conditions()
-        #print("ready for swapping? ", self.ready_for_swapping)
-        if self.ready_for_swapping:
-            coherence_time = min(self.link1.survivaltime_max, self.link2.survivaltime_max)
-            self.link1.turn_off(turn_off_time=self.link1.survivaltime_max)
-            self.link2.turn_off(turn_off_time=self.link2.survivaltime_max)
+        #print("ready for swapping? ", self._ready_for_swapping)
+        if self._ready_for_swapping:
+            coherence_time = min(self.link1._survivaltime_max, self.link2._survivaltime_max)
+            self.link1.turn_off(turn_off_time=self.link1._survivaltime_max)
+            self.link2.turn_off(turn_off_time=self.link2._survivaltime_max)
             #print("turn off link1, link2: ", self.link1._is_working, self.link2._is_working)
             if np.random.random() < self.swapping_probability:
                 self.turn_on(coherence_time)
@@ -330,9 +329,8 @@ class Long_Link:
     def turn_on(self,coherence_time):
         """notice, that link is working and occupy memory space"""
         self._is_working = True
-        self.multiplicity +=1
         self._multiplicity_vec.append(coherence_time)
-        self.survivaltime_max = max(self._multiplicity_vec)
+        self._survivaltime_max = max(self._multiplicity_vec)
         self.memoryL.occupy_memory()
         self.memoryR.occupy_memory()  
 
@@ -340,8 +338,6 @@ class Long_Link:
     def turn_off(self,turn_off_time):
         """turns off existing link"""
         if self._is_working:
-            #self._is_working = False
-            self.multiplicity -=1
             self.memoryL.free_memory()
             self.memoryR.free_memory()
             #print("longer link turned off: ", self._is_working)
@@ -349,33 +345,33 @@ class Long_Link:
             self._multiplicity_vec.remove(turn_off_time)
             if len(self._multiplicity_vec) == 0:
                 self._is_working = False
-                self.survivaltime_max = 0
+                self._survivaltime_max = 0
             else:
-                self.survivaltime_max = max(self._multiplicity_vec)
+                self._survivaltime_max = max(self._multiplicity_vec)
         else:
             raise Exception("Something went wrong, tried to turn off a non working link.")
 
     def next_timestep(self):
         self.reduce_coherence_time()
         self.check_swapping_conditions()
-        #print("number_swapping_options: ", self.number_swapping_options) 
-        number_of_attempts = self.number_swapping_options
-        if self.number_swapping_options > 0:
+        #print("_number_swapping_options: ", self._number_swapping_options) 
+        number_of_attempts = self._number_swapping_options
+        if self._number_swapping_options > 0:
             for __ in range(number_of_attempts):
                 self.swapping_attempt()    
-                #print("multiplicity: ", self.multiplicity) 
+                #print("multiplicity: ", self._multiplicity_vec) 
 
     def reduce_coherence_time(self):
         #print(self._multiplicity_vec)
         if len(self._multiplicity_vec) > 0:
             for i in range(len(self._multiplicity_vec)):
                 self._multiplicity_vec[i] -= 1
-            self.survivaltime_max = max(self._multiplicity_vec)
-            #print(self._multiplicity_vec, self.survivaltime_max)
+            self._survivaltime_max = max(self._multiplicity_vec)
+            #print(self._multiplicity_vec, self._survivaltime_max)
             for j in range(self._multiplicity_vec.count(0)):
                 self.turn_off(turn_off_time=0)
         else:
-            self.survivaltime_max = 0
+            self._survivaltime_max = 0
         #print(self._multiplicity_vec)
 
 
