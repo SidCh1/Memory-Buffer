@@ -178,7 +178,7 @@ class Elementary_Link:
     def __init__(self,
                  memoryL,
                  memoryR,
-                 coherence_time = 100,
+                 coherence_time,
                  generation_probability=1):
         self.generation_probability = generation_probability
         self.memoryL = memoryL
@@ -269,7 +269,7 @@ class Long_Link:
     ----------
     swapping_probability: float
         Probability to swap two links.
-    is_working: bool
+    _is_working: bool
         States whether the link is working or not
     link1, link2: Elementary_Link or Long_Link
     memoryL, memoryR: Memory
@@ -292,7 +292,7 @@ class Long_Link:
         self.memoryL = self.link1.memoryL
         self.memoryR = self.link2.memoryR
         self.ready_for_swapping = False
-        self.is_working = False
+        self._is_working = False
         self.multiplicity = 0
         self.number_swapping_options = 0
         self._multiplicity_vec = []
@@ -322,32 +322,36 @@ class Long_Link:
             coherence_time = min(self.link1.survivaltime_max, self.link2.survivaltime_max)
             self.link1.turn_off(turn_off_time=self.link1.survivaltime_max)
             self.link2.turn_off(turn_off_time=self.link2.survivaltime_max)
-            #print("turn off link1, link2: ", self.link1.is_working, self.link2.is_working)
+            #print("turn off link1, link2: ", self.link1._is_working, self.link2._is_working)
             if np.random.random() < self.swapping_probability:
                 self.turn_on(coherence_time)
-                #print("swapping successful, is_working: ", self.is_working)    
+                #print("swapping successful, _is_working: ", self._is_working)    
 
     def turn_on(self,coherence_time):
         """notice, that link is working and occupy memory space"""
-        self.is_working = True
+        self._is_working = True
         self.multiplicity +=1
         self._multiplicity_vec.append(coherence_time)
+        self.survivaltime_max = max(self._multiplicity_vec)
         self.memoryL.occupy_memory()
         self.memoryR.occupy_memory()  
 
 
     def turn_off(self,turn_off_time):
         """turns off existing link"""
-        if self.is_working:
-            #self.is_working = False
+        if self._is_working:
+            #self._is_working = False
             self.multiplicity -=1
             self.memoryL.free_memory()
             self.memoryR.free_memory()
-            #print("longer link turned off: ", self.is_working)
+            #print("longer link turned off: ", self._is_working)
             """Note: if swapping was successful, memories need to get occupied again."""
             self._multiplicity_vec.remove(turn_off_time)
             if len(self._multiplicity_vec) == 0:
-                self.is_working = False
+                self._is_working = False
+                self.survivaltime_max = 0
+            else:
+                self.survivaltime_max = max(self._multiplicity_vec)
         else:
             raise Exception("Something went wrong, tried to turn off a non working link.")
 
@@ -411,7 +415,7 @@ class Chain:
 
 
     def evaluate_task_done(self):
-        if self.links[-1][0].is_working:
+        if self.links[-1][0]._is_working:
             self.task_done = True
 
 
@@ -433,7 +437,8 @@ class Chain:
 
 
 def create_elementary_links(memory_numbers = np.full(8,1),
-                            generation_probability=1):
+                            generation_probability=1,
+                            coherence_time=10):
     """creates a vector of elementary links with a distribution of memory_buffers"""
 
     if not len(memory_numbers) in [4,8,16,32,64]:
@@ -446,7 +451,7 @@ def create_elementary_links(memory_numbers = np.full(8,1),
         memoryL = Memory(buffer_space=memory_numbers[2*i])
         memoryR = Memory(buffer_space=memory_numbers[2*i+1])
         #print(memory_numbers[2*i])
-        link = Elementary_Link(memoryL = memoryL, memoryR = memoryR,generation_probability=generation_probability)
+        link = Elementary_Link(memoryL = memoryL, memoryR = memoryR,generation_probability=generation_probability, coherence_time=coherence_time)
         linklist.append(link)
 
     return(linklist)
@@ -473,12 +478,13 @@ def create_long_links_doubling(linklist_short,
     
 def create_chain_doubling(memory_numbers = np.full(8,1),
                           generation_probability=1,
-                          swapping_probability=1):    
+                          swapping_probability=1,
+                          coherence_time=10):    
     """creates a list of lists, where the first list element is a list of elementary links (step 1), the second list element is a list of longer links (step 2)..."""
 
     links = []
     #print(memory_numbers)
-    linklist = create_elementary_links(memory_numbers=memory_numbers, generation_probability=generation_probability)
+    linklist = create_elementary_links(memory_numbers=memory_numbers, generation_probability=generation_probability, coherence_time=coherence_time)
     links.append(linklist)
 
     """len(linklist) reduces with factor 1/2 in every step"""
@@ -501,7 +507,8 @@ def create_chain_doubling(memory_numbers = np.full(8,1),
 def get_statistics(memory_numbers = np.full(8,1),
                           generation_probability=1,
                           swapping_probability=1,
-                          number_of_repetitions=100
+                          number_of_repetitions=100,
+                          coherence_time = 10
                           ):
 
     waitingtimes = []
@@ -510,7 +517,7 @@ def get_statistics(memory_numbers = np.full(8,1),
     for __ in range(number_of_repetitions):
         links = create_chain_doubling(memory_numbers = memory_numbers, 
                 generation_probability=generation_probability,
-                swapping_probability=swapping_probability)
+                swapping_probability=swapping_probability,coherence_time=coherence_time)
         chain = Chain(links)
         chains.append(chain)
 
@@ -538,17 +545,22 @@ if __name__ == "__main__":
 
     """simulation parameters"""
     memory_numbers = [1,1,1,1,1,1,1,1]
-    generation_probability=0.001
-    swapping_probability=0.5
-    number_of_repetitions=50    
+    generation_probability=0.1
+    swapping_probability=1
+    number_of_repetitions=50   
+    coherence_time = 100 
 
-    get_statistics(memory_numbers = memory_numbers,
+    data = get_statistics(memory_numbers = memory_numbers,
                           generation_probability=generation_probability,
                           swapping_probability=swapping_probability,
-                          number_of_repetitions=number_of_repetitions)
+                          number_of_repetitions=number_of_repetitions,
+                          coherence_time = coherence_time)
+
+    print("AWT simulation: ", data[0], "+-", data[1])
+
 
     print("analytic calculation for swapping_probability = 1 and memory_buffer = 1 at every repeater station:")
     n = 4
     q = 1. - generation_probability
     expval = sum([(-1)**(j + 1)*scipy.special.binom(n,j)/(1-q**j) for j in range (1,n+1)])
-    print("computed expectation value: ", expval)
+    print(expval)
