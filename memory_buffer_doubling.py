@@ -446,13 +446,14 @@ def get_statistics(memory_numbers = np.full(8,1),
     #print(waitingtimes, len(waitingtimes))
  
     mean = statistics.mean(waitingtimes)
-    stdev = statistics.stdev(waitingtimes)
+    error = np.sqrt(statistics.variance(waitingtimes)/len(waitingtimes))
+
 
     #print("memory_buffer distribution: ", memory_numbers)
     #print("generation_probability: ", generation_probability , ", swapping_probability: ", swapping_probability)
-    #print("waiting_time: ", mean, "+-", stdev)
+    #print("waiting_time: ", mean, "+-", error)
 
-    return [mean,stdev]
+    return [mean,error]
 
 
 ##################################################
@@ -465,8 +466,8 @@ if __name__ == "__main__":
     """simulation parameters"""
     memory_numbers = [1,1,1,1,1,1,1,1]
     generation_probability=0.01
-    swapping_probability=0.5
-    number_of_repetitions=10    
+    swapping_probability=1
+    number_of_repetitions=100    
 
     data = get_statistics(memory_numbers = memory_numbers,
                           generation_probability=generation_probability,

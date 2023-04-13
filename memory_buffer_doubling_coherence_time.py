@@ -186,7 +186,6 @@ class Elementary_Link:
         self.coherence_time = coherence_time
         self._ready_for_generation = False
         self._is_working = False
-        #self._multiplicity = 0
         self._multiplicity_vec = []
         self._survivaltime_max = 0
         
@@ -524,12 +523,13 @@ def get_statistics(memory_numbers = np.full(8,1),
  
     mean = statistics.mean(waitingtimes)
     stdev = statistics.stdev(waitingtimes)
+    error = np.sqrt(statistics.variance(waitingtimes)/len(waitingtimes))
 
     #print("memory_buffer distribution: ", memory_numbers)
     #print("generation_probability: ", generation_probability , ", swapping_probability: ", swapping_probability)
-    #print("waiting_time: ", mean, "+-", stdev)
+    #print("waiting_time: ", mean, "+-", error)
 
-    return [mean,stdev]
+    return [mean,error]
 
 
 ##################################################
@@ -541,7 +541,7 @@ if __name__ == "__main__":
 
     """simulation parameters"""
     memory_numbers = [1,1,1,1,1,1,1,1]
-    generation_probability=0.1
+    generation_probability=1
     swapping_probability=1
     number_of_repetitions=50   
     coherence_time = 100 
