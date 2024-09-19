@@ -14,11 +14,13 @@ Goal of this program:
 #memory_numbers = [2,1,1,2,2,1,1,2]
 #generation_probability=0.01
 #swapping_probability = 0.5
-number_of_repetitions_original=2000 
+number_of_repetitions_original=100 # 2000 
 #element_numbers = 4
 
-length_vec = [100, 50, 25, 12.5]
-afix = [8,4,2,1]
+chain_length_power = [1,2,3,4]
+
+max_len = 100
+#afix = [8,4,2,1]
 
 file_name_list = ["compare_fixed_length_32-2.csv", "compare_fixed_buffers_32-4.csv", "compare_fixed_buffers_32-8.csv", "compare_fixed_buffers_32-16.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
 
@@ -32,12 +34,14 @@ dataa = np.linspace(0.1,1,46)
 
 """vary distribution of memory_numbers"""
 
-for j in range(len(afix)):
-    a = afix[j]
-    memory_numbers = [a,a,a,a,a,a,a,a]
-    file_name = file_name_list[j]
-    #print(memory_numbers)
-    gen_prob = prob_function(length_vec[j])
+for j in chain_length_power:
+    a = int(32*(2**(-j-1)))
+    memory_numbers = [a] * 2**(j+1)
+    element_numbers = 2**(j+1)
+    file_name = file_name_list[j-1]
+    print(memory_numbers)
+    
+    gen_prob = prob_function(min_len/(2**(j)))
     print(gen_prob)
     
     number_of_repetitions = number_of_repetitions_original

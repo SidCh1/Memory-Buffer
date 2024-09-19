@@ -1,7 +1,7 @@
 import memory_buffer_doubling as memb
 import scipy.special
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import csv
 
 """
@@ -31,9 +31,9 @@ with open('infty_buffer2.csv','r') as csvfile:
         sw_prob = float(row[2])
         mean_inf = float(row[3])
         error_inf = float(row[4])
-        number_of_repetitions =  int(row[5]) 
+        number_of_repetitions = 100 # int(row[5]) 
         
-        print(gen_prob, sw_prob, mean_inf, error_inf, number_of_repetitions)
+        #print(gen_prob, sw_prob, mean_inf, error_inf, number_of_repetitions)
         
         mean_previous = mean_inf
         error_previous = error_inf 
@@ -49,16 +49,16 @@ with open('infty_buffer2.csv','r') as csvfile:
                           swapping_probability=sw_prob,
                           number_of_repetitions=number_of_repetitions)
         
-        print(memory_numbers, "length=", element_numbers ,",generation_prob=", gen_prob,", swapping_prob=", sw_prob, "AWT=", data[0], "+-", data[1])
+        #print(memory_numbers, "length=", element_numbers ,",generation_prob=", gen_prob,", swapping_prob=", sw_prob, "AWT=", data[0], "+-", data[1])
                          
         
         
         while abs(data[0] - mean_previous) >  error_previous:
-            print("Differenz vorher: ", abs(mean_previous - data[0]), error_previous)
+            #print("Differenz vorher: ", abs(mean_previous - data[0]), error_previous)
             a += 1
             #print(a)
             memory_numbers = [b,a,a,b,b,a,a,b] 
-            print(memory_numbers)
+            #print(memory_numbers)
             
             mean_previous = data[0]
             error_previous = data[1]
@@ -67,8 +67,8 @@ with open('infty_buffer2.csv','r') as csvfile:
                           generation_probability=gen_prob,
                           swapping_probability=sw_prob,
                           number_of_repetitions=number_of_repetitions)
-            print(memory_numbers, "length=", element_numbers ,",generation_prob=", gen_prob,", swapping_prob=", sw_prob, "AWT=", data[0], "+-", data[1])              
-            print("Differenz nachher: ", abs(mean_previous - data[0]), data[1])
+            #print(memory_numbers, "length=", element_numbers ,",generation_prob=", gen_prob,", swapping_prob=", sw_prob, "AWT=", data[0], "+-", data[1])              
+            #print("Differenz nachher: ", abs(mean_previous - data[0]), data[1])
             
             
             
@@ -85,11 +85,11 @@ with open('infty_buffer2.csv','r') as csvfile:
         error_previous = error_inf                  
                           
         while abs(data[0] - mean_previous) >  error_previous:
-            print("Differenz vorher: ", abs(mean_previous - data[0]), error_previous)
+            #print("Differenz vorher: ", abs(mean_previous - data[0]), error_previous)
             b += 1
             #print(b)
             memory_numbers = [b,a,a,b,b,a,a,b] 
-            print(memory_numbers)
+            #print(memory_numbers)
             
             mean_previous = data[0]
             error_previous = data[1]    
@@ -98,17 +98,17 @@ with open('infty_buffer2.csv','r') as csvfile:
                           generation_probability=gen_prob,
                           swapping_probability=sw_prob,
                           number_of_repetitions=number_of_repetitions)
-            print(memory_numbers, "length=", element_numbers ,",generation_prob=", gen_prob,", swapping_prob=", sw_prob, "AWT=", data[0], "+-", data[1])              
-            print("Differenz nachher: ", abs(mean_previous - data[0]), data[1])
+            #print(memory_numbers, "length=", element_numbers ,",generation_prob=", gen_prob,", swapping_prob=", sw_prob, "AWT=", data[0], "+-", data[1])              
+            #print("Differenz nachher: ", abs(mean_previous - data[0]), data[1])
             
                           
         
-        print(memory_numbers, "length=", element_numbers ,",generation_prob=", gen_prob,", swapping_prob=", sw_prob, "AWT=", data[0], "+-", data[1])
+        #print(memory_numbers, "length=", element_numbers ,",generation_prob=", gen_prob,", swapping_prob=", sw_prob, "AWT=", data[0], "+-", data[1])
         
         bfix = b    
         
         #print("fertig: ", mean_previous - data[0], error_previous)
-        print("final: ", memory_numbers, afix, bfix, "length=", element_numbers ,",generation_prob=", gen_prob,", swapping_prob=", sw_prob, "memory_buffer = 2, AWT=", data[0], "+-", data[1], ", ATW_inf=" , mean_inf, "+-", error_inf)
+        #print("final: ", memory_numbers, afix, bfix, "length=", element_numbers ,",generation_prob=", gen_prob,", swapping_prob=", sw_prob, "memory_buffer = 2, AWT=", data[0], "+-", data[1], ", ATW_inf=" , mean_inf, "+-", error_inf)
         "Daten in csv schreiben"
         with open(file_name, mode='a') as csvfile:
             csvfile_writer = csv.writer(csvfile, delimiter=',')
