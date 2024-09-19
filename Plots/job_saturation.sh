@@ -14,5 +14,5 @@ echo "Number of tasks: "
 echo $SLURM_NTASKS
 
 
-python memory_buffer_doubling.py 
+python saturation_parameters.py 
 
