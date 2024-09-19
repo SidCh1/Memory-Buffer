@@ -15,7 +15,7 @@ Goal of this program:
 #generation_probability=0.01
 #swapping_probability = 0.5
 number_of_repetitions_original=2000 
-element_numbers = 4
+#element_numbers = 4
 
 length_vec = [100, 50, 25, 12.5]
 afix = [8,4,2,1]
