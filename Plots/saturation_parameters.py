@@ -31,7 +31,7 @@ with open('infty_buffer2.csv','r') as csvfile:
         sw_prob = float(row[2])
         mean_inf = float(row[3])
         error_inf = float(row[4])
-        number_of_repetitions = 100 # int(row[5]) 
+        number_of_repetitions = int(row[5]) 
         
         #print(gen_prob, sw_prob, mean_inf, error_inf, number_of_repetitions)
         
