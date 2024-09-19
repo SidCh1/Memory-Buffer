@@ -1,7 +1,6 @@
 import memory_buffer_doubling as memb
 import scipy.special
 import numpy as np
-import matplotlib.pyplot as plt
 import csv
 
 """
@@ -55,14 +54,14 @@ for j in range(len(bfix)):
         
         while (data[1]/data[0]) > 0.01:
             number_of_repetitions = 2*number_of_repetitions
-            print("new number of repetitions: ", number_of_repetitions)
+            #print("new number of repetitions: ", number_of_repetitions)
             data = memb.get_statistics(memory_numbers = memory_numbers,
                           generation_probability=gen_prob,
                           swapping_probability=sw_prob,
                           number_of_repetitions=number_of_repetitions)
 
 
-        print("length=", element_numbers ,",generation_prob=", gen_prob,", swapping_prob=", sw_prob, "AWT=", data[0], "+-", data[1])              
+        #print("length=", element_numbers ,",generation_prob=", gen_prob,", swapping_prob=", sw_prob, "AWT=", data[0], "+-", data[1])              
         
         "Daten in csv schreiben"
         with open(file_name, mode='a') as csvfile:
