@@ -14,5 +14,5 @@ echo "Number of tasks: "
 echo $SLURM_NTASKS
 
 
-python3 compare_fixed_buffers_g3.py 
+python3 compare_fixed_buffers_g5.py 
 
