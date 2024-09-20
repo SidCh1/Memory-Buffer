@@ -20,11 +20,11 @@ const = 8
 bfix = [7,6,5,4]
 afix = [const - b for b in bfix]
 
-file_name_list = ["compare_fixed_buffers_8-7_a5.csv", "compare_fixed_buffers_8-6_a5.csv", "compare_fixed_buffers_8-5_a5.csv", "compare_fixed_buffers_8-4_a5.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
+file_name_list = ["compare_fixed_buffers_8-7_a5_pgros.csv", "compare_fixed_buffers_8-6_a5_pgros.csv", "compare_fixed_buffers_8-5_a5_pgros.csv", "compare_fixed_buffers_8-4_a5_pgros.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
 
 
 sw_prob = swapping_probability
-datap = np.linspace(0.005,0.015,51)
+datap = np.linspace(0.005,0.95,46)
 
 """vary distribution of memory_numbers"""
 
