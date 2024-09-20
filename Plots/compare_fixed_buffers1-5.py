@@ -20,7 +20,7 @@ const = 8
 bfix = [7,6,5,4]
 afix = [const - b for b in bfix]
 
-file_name_list = ["compare_fixed_buffers_8-6_a1.csv"]
+file_name_list = ["compare_fixed_buffers_8-5_a1.csv"]
 #file_name_list = ["compare_fixed_buffers_8-6_a1.csv", "compare_fixed_buffers_8-5_a1.csv", "compare_fixed_buffers_8-4_a1.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
 
 
