@@ -17,10 +17,10 @@ number_of_repetitions_original=2000
 element_numbers = 4
 
 const = 16
-bfix = [15,14,13,12,11,10,9,8]
+bfix = [15]
 afix = [const - b for b in bfix]
 
-file_name_list = ["compare_fixed_buffers_16-15_a1_pgros.csv", 
+file_name_list = ["compare_fixed_buffers_16-15_a5_pgros.csv", 
 "compare_fixed_buffers_16-14_a5_pgros.csv",
 "compare_fixed_buffers_16-13_a5_pgros.csv",
 "compare_fixed_buffers_16-12_a5_pgros.csv",
