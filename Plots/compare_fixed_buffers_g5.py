@@ -16,20 +16,15 @@ swapping_probability = 0.5
 number_of_repetitions_original=2000 
 element_numbers = 4
 
-const = 16
-bfix = [15]
+const = 10
+bfix = [9,8,7,6,5]
 afix = [const - b for b in bfix]
 
-file_name_list = ["compare_fixed_buffers_16-15_a5_pgros.csv", 
-"compare_fixed_buffers_16-14_a5_pgros.csv",
-"compare_fixed_buffers_16-13_a5_pgros.csv",
-"compare_fixed_buffers_16-12_a5_pgros.csv",
-"compare_fixed_buffers_16-11_a5_pgros.csv",
-"compare_fixed_buffers_16-10_a5_pgros.csv",
-"compare_fixed_buffers_16-9_a5_pgros.csv",
-"compare_fixed_buffers_16-8_a5_pgros.csv",
-"compare_fixed_buffers_16-7_a5_pgros.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
-
+file_name_list = ["compare_fixed_buffers_10-9_a5_pgros.csv", 
+"compare_fixed_buffers_10-8_a5_pgros.csv", 
+"compare_fixed_buffers_10-7_a5_pgros.csv", 
+"compare_fixed_buffers_10-6_a5_pgros.csv", 
+"compare_fixed_buffers_10-5_a5_pgros.csv", ] ### file names: compare_fixed_buffers_const-bfix_.csv
 
 sw_prob = swapping_probability
 datap = np.linspace(0.005,0.95,46)
