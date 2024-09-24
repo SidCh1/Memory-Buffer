@@ -26,7 +26,6 @@ file_name_list = ["compare_fixed_buffers_10-9_a5_pgros.csv",
 "compare_fixed_buffers_10-6_a5_pgros.csv", 
 "compare_fixed_buffers_10-5_a5_pgros.csv", ] ### file names: compare_fixed_buffers_const-bfix_.csv
 
-
 sw_prob = swapping_probability
 datap = np.linspace(0.005,0.95,46)
 
