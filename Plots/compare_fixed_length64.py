@@ -40,7 +40,7 @@ for m in chain_length_power:
     a = int(total_buffer*(2**(-m-1)))
     memory_numbers = [a] * 2**(m+1)
     element_numbers = 2**m
-    file_name = file_name_list[m-2]
+    file_name = file_name_list[0]
     
 
     segment_len = max_len/(2**(m-2))
