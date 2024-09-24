@@ -27,7 +27,8 @@ mean7=[]
 
 
 
-with open('./Data/compare_fixed_buffers_8-4_a3.csv','r') as csvfile:
+with open('./Data/compare_fixed_buffers_8-4_a1_pgros.csv','r') as csvfile:
+#with open('./Data/compare_fixed_buffers_8-4_a3.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
@@ -38,7 +39,8 @@ with open('./Data/compare_fixed_buffers_8-4_a3.csv','r') as csvfile:
 		#bfix4.append(int(row[7]))
 
 
-with open('./Data/compare_fixed_buffers_8-5_a3.csv','r') as csvfile:
+with open('./Data/compare_fixed_buffers_8-4_a1_pgros.csv','r') as csvfile:
+#with open('./Data/compare_fixed_buffers_8-5_a3.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
@@ -49,7 +51,8 @@ with open('./Data/compare_fixed_buffers_8-5_a3.csv','r') as csvfile:
 		#bfix4.append(int(row[7]))		
 
 
-with open('./Data/compare_fixed_buffers_8-6_a3.csv','r') as csvfile:
+with open('./Data/compare_fixed_buffers_8-6_a1_pgros.csv','r') as csvfile:
+#with open('./Data/compare_fixed_buffers_8-6_a3.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
@@ -60,7 +63,8 @@ with open('./Data/compare_fixed_buffers_8-6_a3.csv','r') as csvfile:
 		#bfix4.append(int(row[7]))
 
 
-with open('./Data/compare_fixed_buffers_8-7_a3.csv','r') as csvfile:
+with open('./Data/compare_fixed_buffers_8-7_a1_pgros.csv','r') as csvfile:
+#with open('./Data/compare_fixed_buffers_8-7_a3.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
@@ -71,10 +75,10 @@ with open('./Data/compare_fixed_buffers_8-7_a3.csv','r') as csvfile:
 		#bfix4.append(int(row[7]))
 
 
-plt.plot(gen_prob7,mean7, label=r'a = 1, b = 7') #
-plt.plot(gen_prob6,mean6, linestyle='dotted', label=r'a = 2, b = 6') #
-plt.plot(gen_prob5,mean5, linestyle='dashed', label=r'a = 3, b = 5') #
-plt.plot(gen_prob4,mean4, linestyle='dashdot', label=r'a = 4, b = 4') #
+plt.plot(gen_prob7,mean7, label=r'b^{(1)} = 1, b^{(2)} = 7')
+plt.plot(gen_prob6,mean6, linestyle='dotted', label=r'b^{(1)} = 2, b^{(2)} = 6') #
+plt.plot(gen_prob5,mean5, linestyle='dashed', label=r'b^{(1)} = 3, b^{(2)} = 5') #
+plt.plot(gen_prob4,mean4, linestyle='dashdot', label=r'b^{(1)} = 4, b^{(2)} = 4') #
 
 
 
