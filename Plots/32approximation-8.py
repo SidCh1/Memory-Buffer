@@ -17,15 +17,8 @@ number_of_repetitions_original=2000
 element_numbers = 8
 
 
-kfix = [1,2,3,4,5]
-
-
-file_name_list = ["32approximation_8_1_a2.csv", 
-"32approximation_8_2_a2.csv",
-"32approximation_8_3_a2.csv",
-"32approximation_8_4_a2.csv",
-"32approximation_8_5_a2.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
-
+kfix = [1]
+file_name_list = ["32approximation_8_1_a2.csv"] 
 
 sw_prob = swapping_probability
 datap = np.linspace(0.005,0.015,51)
