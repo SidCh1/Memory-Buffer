@@ -17,13 +17,12 @@ number_of_repetitions_original=2000
 element_numbers = 4
 
 
-kfix = [1,2,3,4,5]
+kfix = [2,3,4,5]
 
 
-file_name_list = ["32approximation_4_1_a5.csv", 
-"32approximation_4_2_a5.csv"
-"32approximation_4_3_a5.csv"
-"32approximation_4_4_a5.csv"
+file_name_list = ["32approximation_4_2_a5.csv",
+"32approximation_4_3_a5.csv",
+"32approximation_4_4_a5.csv",
 "32approximation_4_5_a5.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
 
 

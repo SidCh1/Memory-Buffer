@@ -20,11 +20,11 @@ element_numbers = 8
 kfix = [1,2,3,4,5]
 
 
-file_name_list = ["32approximation_8_1_a5.csv", 
-"32approximation_8_2_a5.csv"
-"32approximation_8_3_a5.csv"
-"32approximation_8_4_a5.csv"
-"32approximation_8_5_a5.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
+file_name_list = ["32approximation_8_1_a2.csv", 
+"32approximation_8_2_a2.csv",
+"32approximation_8_3_a2.csv",
+"32approximation_8_4_a2.csv",
+"32approximation_8_5_a2.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
 
 
 sw_prob = swapping_probability
