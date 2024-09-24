@@ -17,14 +17,10 @@ number_of_repetitions_original=2000
 element_numbers = 4
 
 const = 10
-bfix = [9,8,7,6,5]
+bfix = [9]
 afix = [const - b for b in bfix]
 
-file_name_list = ["compare_fixed_buffers_10-9_a3_pgros.csv", 
-"compare_fixed_buffers_10-8_a3_pgros.csv", 
-"compare_fixed_buffers_10-7_a3_pgros.csv", 
-"compare_fixed_buffers_10-6_a3_pgros.csv", 
-"compare_fixed_buffers_10-5_a3_pgros.csv", ] ### file names: compare_fixed_buffers_const-bfix_.csv
+file_name_list = ["compare_fixed_buffers_10-9_a3_pgros.csv" ] ### file names: compare_fixed_buffers_const-bfix_.csv
 
 
 sw_prob = swapping_probability
