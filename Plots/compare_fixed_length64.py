@@ -17,12 +17,12 @@ Goal of this program:
 number_of_repetitions_original=100 # 2000 
 #element_numbers = 4
 
-chain_length_power = [2,3,4,5]
+chain_length_power = [5]
 
 max_len = 100
 total_buffer = 64
 
-file_name_list = ["compare_fixed_length_64-4.csv", "compare_fixed_length_64-8.csv", "compare_fixed_length_64-16.csv", "compare_fixed_length_64-32.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
+file_name_list = ["compare_fixed_length_64-32.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
 
 def prob_function(length):
     Latt = 22
@@ -31,7 +31,7 @@ def prob_function(length):
 
 
 #dataa = np.linspace(0.5,1,6)
-dataa = np.linspace(0.1,1,46)
+dataa = np.linspace(0.1,0.22,7)
 
 
 """vary distribution of memory_numbers"""
