@@ -31,12 +31,13 @@ def prob_function(length):
 
 
 #dataa = np.linspace(0.5,1,6)
-dataa = np.linspace(0.1,0.22,7)
+dataa = np.linspace(0.1,0.16,4)
 
 
 """vary distribution of memory_numbers"""
 
-for m in chain_length_power:
+for j in range(len(chain_length_power)):
+    m = chain_length_power[j]
     a = int(total_buffer*(2**(-m-1)))
     memory_numbers = [a] * 2**(m+1)
     element_numbers = 2**m
