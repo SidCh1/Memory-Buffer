@@ -20,8 +20,8 @@ Goal of this program:
 #sw_prob_list = [0.5] #np.linspace(0.1,1,91)
 
 
-skip = 51*1
-file_name = "1saturation_parameters_p005-01.csv"
+skip = 51*40
+file_name = "40saturation_parameters_p005-01.csv"
 element_numbers = 4
 
 
