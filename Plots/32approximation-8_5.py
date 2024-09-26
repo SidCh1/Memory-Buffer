@@ -17,9 +17,8 @@ number_of_repetitions_original=2000
 element_numbers = 8
 
 
-kfix = [3]
-file_name_list = ["32approximation_8_3_a2.csv"] 
-
+kfix = [5]
+file_name_list = ["32approximation_8_5_a2_homo.csv"] 
 
 sw_prob = swapping_probability
 datap = np.linspace(0.005,0.015,51)
@@ -28,7 +27,7 @@ datap = np.linspace(0.005,0.015,51)
 
 for j in range(len(kfix)):
     k = kfix[j]
-    memory_numbers = [4*k, k, k, 2*k, 2*k, k, k, 2*k,2*k, k, k, 2*k, 2*k, k, k, 4*k]
+    memory_numbers = [k, k, k, k, k, k, k, k,k, k, k, k, k, k, k, k]
     file_name = file_name_list[j]
     #print(memory_numbers)
     

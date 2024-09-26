@@ -17,13 +17,14 @@ number_of_repetitions_original=2000
 element_numbers = 4
 
 
-kfix = [2,3,4,5]
+kfix = [1,2,3,4,5]
 
 
-file_name_list = ["32approximation_4_2_a5.csv",
-"32approximation_4_3_a5.csv",
-"32approximation_4_4_a5.csv",
-"32approximation_4_5_a5.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
+file_name_list = ["32approximation_4_1_a5_homo.csv",
+"32approximation_4_2_a5.csv_homo",
+"32approximation_4_3_a5.csv_homo",
+"32approximation_4_4_a5.csv_homo",
+"32approximation_4_5_a5.csv_homo"] ### file names: compare_fixed_buffers_const-bfix_.csv
 
 
 sw_prob = swapping_probability
@@ -33,7 +34,7 @@ datap = np.linspace(0.005,0.015,51)
 
 for j in range(len(kfix)):
     k = kfix[j]
-    memory_numbers = [2*k, k, k, 2*k, 2*k, k, k, 2*k]
+    memory_numbers = [k, k, k, k, k, k, k, k]
     file_name = file_name_list[j]
     #print(memory_numbers)
     
