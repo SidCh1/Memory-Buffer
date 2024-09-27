@@ -31,8 +31,8 @@ def prob_function(length):
 
 
 #dataa = np.linspace(0.5,1,6)
-dataa = np.linspace(0.1,0.16,4)
-
+#dataa = np.linspace(0.1,0.12,2)
+dataa = [0.12]
 
 """vary distribution of memory_numbers"""
 
