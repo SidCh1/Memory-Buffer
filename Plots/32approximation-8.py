@@ -17,17 +17,27 @@ number_of_repetitions_original=2000
 element_numbers = 8
 
 
-kfix = [1]
-file_name_list = ["32approximation_8_1_a2_homo.csv"] 
+k = 2
+memory_numbers = [k, k, k, k, k, k, k, k,k, k, k, k, k, k, k, k]
 
-sw_prob = swapping_probability
-datap = np.linspace(0.005,0.015,51)
+
+sw_prob_list = [0.2,0.4,0.5,0.7,1]
+
+
+file_name_list = ["32approximation_8_2_a2_homo.csv",
+"32approximation_8_2_a4.csv_homo",
+"32approximation_8_2_a5.csv_homo",
+"32approximation_8_2_a7.csv_homo",
+"32approximation_8_2_a10.csv_homo"] ### file names: compare_fixed_buffers_const-bfix_.csv
+
+
+#sw_prob = swapping_probability
+datap = np.linspace(0.005,0.1,96)
 
 """vary distribution of memory_numbers"""
 
-for j in range(len(kfix)):
-    k = kfix[j]
-    memory_numbers = [k, k, k, k, k, k, k, k,k, k, k, k, k, k, k, k]
+for j in range(len(sw_prob_list)):
+    sw_prob = sw_prob_list[j]
     file_name = file_name_list[j]
     #print(memory_numbers)
     
