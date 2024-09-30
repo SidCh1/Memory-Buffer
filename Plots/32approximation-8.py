@@ -18,17 +18,17 @@ element_numbers = 8
 
 
 k = 2
-memory_numbers = [k, k, k, k, k, k, k, k,k, k, k, k, k, k, k, k]
+memory_numbers = [4*k, k, k,2*k, 2*k, k, k, 4*k,4*k, k, k,2*k, 2*k, k, k, 4*k]
 
 
 sw_prob_list = [0.2,0.4,0.5,0.7,1]
 
 
-file_name_list = ["32approximation_8_2_a2_homo.csv",
-"32approximation_8_2_a4.csv_homo",
-"32approximation_8_2_a5.csv_homo",
-"32approximation_8_2_a7.csv_homo",
-"32approximation_8_2_a10.csv_homo"] ### file names: compare_fixed_buffers_const-bfix_.csv
+file_name_list = ["32approximation_8_2_a2.csv",
+"32approximation_8_2_a4.csv",
+"32approximation_8_2_a5.csv",
+"32approximation_8_2_a7.csv",
+"32approximation_8_2_a10.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
 
 
 #sw_prob = swapping_probability
