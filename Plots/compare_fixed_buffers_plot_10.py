@@ -11,72 +11,75 @@ from matplotlib.pyplot import figure
 #plt.rcParams['font.size'] = '7' #default = 10
 
 
-sw_prob2=[]
-sw_prob4=[]
-sw_prob8=[]
-sw_prob16=[]
-sw_prob32=[]
-mean2=[]
-mean4=[]
+gen_prob6=[]
+gen_prob7=[]
+gen_prob8=[]
+gen_prob9=[]
+gen_prob5=[]
+mean6=[]
+mean7=[]
 mean8=[]
-mean16=[]
-mean32=[]
+mean9=[]
+mean5=[]
 
 
 
+null=[]
 
 
 
-
-
-with open('./Data/compare_fixed_length_32-2.csv','r') as csvfile:
+with open('./Data/compare_fixed_buffers_10-5_a1_pgros.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
-		sw_prob2.append(float(row[2])) 
-		mean2.append(float(row[3]))
-		
-with open('./Data/compare_fixed_length_64-4.csv','r') as csvfile:
+		gen_prob5.append(float(row[1])) 
+		mean5.append(float(row[3]))
+
+
+with open('./Data/compare_fixed_buffers_10-6_a1_pgros.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
-		sw_prob4.append(float(row[2])) 
-		mean4.append(float(row[3]))
-		
-with open('./Data/compare_fixed_length_64-8.csv','r') as csvfile:
+		gen_prob6.append(float(row[1])) 
+		mean6.append(float(row[3]))
+
+with open('./Data/compare_fixed_buffers_10-7_a1_pgros.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
-		sw_prob8.append(float(row[2])) 
+		gen_prob7.append(float(row[1])) 
+		mean7.append(float(row[3]))
+
+
+
+with open('./Data/compare_fixed_buffers_10-8_a1_pgros.csv','r') as csvfile:
+	plots=csv.reader(csvfile, delimiter=',')
+	#next(plots) #damit die erste zeile nicht eingelesen wird
+	for row in plots:
+		gen_prob8.append(float(row[1])) 
 		mean8.append(float(row[3]))
-		
-with open('./Data/compare_fixed_length_64-16.csv','r') as csvfile:
+
+with open('./Data/compare_fixed_buffers_10-9_a1_pgros.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
-		sw_prob16.append(float(row[2])) 
-		mean16.append(float(row[3]))
+		gen_prob9.append(float(row[1])) 
+		mean9.append(float(row[3]))
 		
-with open('compare_fixed_length_64-32.csv','r') as csvfile:
-	plots=csv.reader(csvfile, delimiter=',')
-	#next(plots) #damit die erste zeile nicht eingelesen wird
-	for row in plots:
-		sw_prob32.append(float(row[2])) 
-		mean32.append(float(row[3]))								
+						
+
+plt.plot(gen_prob9,mean9, label=r'b^{(1)} = 1, b^{(2)} = 9')
+plt.plot(gen_prob8,mean8, linestyle='dotted', label=r'b^{(1)} = 2, b^{(2)} = 8') #
+plt.plot(gen_prob7,mean7, linestyle='dashed', label=r'b^{(1)} = 3, b^{(2)} = 7') #
+plt.plot(gen_prob6,mean6, linestyle='dashdot', label=r'b^{(1)} = 4, b^{(2)} = 6') 
+plt.plot(gen_prob5,mean5, linestyle='dashed', label=r'b^{(1)} = 5, b^{(2)} = 5') #
 
 
+#plt.plot(gen_prob10,mean10, linestyle='dashdot', label=r'b^{(1)} = 6, b^{(2)} = 10') #
+#plt.plot(gen_prob9,mean9, linestyle='dashed', label=r'b^{(1)} = 7, b^{(2)} = 9') #
+#plt.plot(gen_prob8,mean8, linestyle='dashdot', label=r'b^{(1)} = 8, b^{(2)} = 8') #
+plt.plot(null,null,'.', label=r'$a = 0.1$')
 
-
-
-#plt.plot(sw_prob2,mean2, label=r'M = 2') #
-#plt.plot(sw_prob4,mean4, linestyle='dotted', label=r'M = 4') #
-#plt.plot(sw_prob8,mean8, linestyle='dashed', label=r'M = 8') #
-#plt.plot(sw_prob16,mean16, linestyle='dashdot', label=r'M = 16') #
-
-plt.plot(sw_prob4,mean4, label=r'M = 4') #
-plt.plot(sw_prob8,mean8, linestyle='dotted', label=r'M = 8') #
-plt.plot(sw_prob16,mean16, linestyle='dashed', label=r'M = 16') #
-plt.plot(sw_prob32,mean32, linestyle='dashdot', label=r'M = 32') #
 
 
 
@@ -94,7 +97,7 @@ plt.plot()
 #plt.title('(0-3)')
 #plt.title('Random weight vectors in 1-norm for CHSH (data1.csv)')
 
-plt.xlabel('$a$')
+plt.xlabel('$p$')
 plt.ylabel(r'$T$')
 
 plt.legend(loc=1,frameon=False) #loc=4 fixiert die position
@@ -102,7 +105,7 @@ plt.legend(loc=1,frameon=False) #loc=4 fixiert die position
 plt.yscale('log')
 
 #plt.savefig("compare_fixed_buffers.pdf", dpi=150)
-plt.savefig("nwB_compare_fixed_length_64.pdf", bbox_inches='tight')
+plt.savefig("compare_fixed_buffers_10_a1_g.pdf", bbox_inches='tight')
 
 plt.show()
 
