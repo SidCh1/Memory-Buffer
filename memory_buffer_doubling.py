@@ -49,7 +49,7 @@ Ideas for later
 
 import numpy as np
 import statistics
-import scipy.special
+from math import comb
 
 
 ################################################################
@@ -484,5 +484,5 @@ if __name__ == "__main__":
     print("analytic calculation for swapping_probability = 1 and memory_buffer = 1 at every repeater station:")
     n = element_numbers
     q = 1. - generation_probability
-    expval = sum([(-1)**(j + 1)*scipy.special.binom(n,j)/(1-q**j) for j in range (1,n+1)])
+    expval = sum([(-1)**(j + 1)*comb(n,j)/(1-q**j) for j in range (1,n+1)])
     print("computed expectation value: ", expval)
