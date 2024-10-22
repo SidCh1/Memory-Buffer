@@ -19,11 +19,11 @@ Goal of this program:
 #datap = [0.1] # np.linspace(0.05,0.1,51)
 #sw_prob_list = [0.5] #np.linspace(0.1,1,91)
 
-file_name = "saturation_parameters_p005-01_v2.csv"
+file_name = "saturation_parameters_p005-01_v2_missing.csv"
 element_numbers = 4
 
 
-with open('./Data/saturation_parameters_p005-01.csv','r') as csvfile:
+with open('./Temp/saturation_parameters_p005-01_missing.csv','r') as csvfile:
     plots=csv.reader(csvfile, delimiter=',')
     #next(plots) #damit die erste zeile nicht eingelesen werden
     for row in plots:
