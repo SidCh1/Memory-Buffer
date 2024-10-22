@@ -467,17 +467,22 @@ if __name__ == "__main__":
     memory_numbers = [1,1,1,1,1,1,1,1]
     generation_probability=0.01
     swapping_probability=1
-    number_of_repetitions=100    
+    number_of_repetitions=100   
+    
+    element_numbers = int(len(memory_numbers)/2) 
 
     data = get_statistics(memory_numbers = memory_numbers,
                           generation_probability=generation_probability,
                           swapping_probability=swapping_probability,
                           number_of_repetitions=number_of_repetitions)
                           
+    print("simulation parameters: \n generation probability =  ", generation_probability, "\n swapping probability = ",swapping_probability , "\n repeater chain length: ", element_numbers)
+    
     print("AWT simulation: ", data[0], "+-", data[1])
+    
 
     print("analytic calculation for swapping_probability = 1 and memory_buffer = 1 at every repeater station:")
-    n = 4
+    n = element_numbers
     q = 1. - generation_probability
     expval = sum([(-1)**(j + 1)*scipy.special.binom(n,j)/(1-q**j) for j in range (1,n+1)])
     print("computed expectation value: ", expval)
