@@ -42,7 +42,7 @@ with open('./Data/saturation_parameters_p005-01.csv','r') as csvfile:
         error_previous = error_inf 
 
     
-        a = 1
+        a = a_min
         b = 10000
         memory_numbers = [b,a,a,b,b,a,a,b]
 
@@ -76,7 +76,7 @@ with open('./Data/saturation_parameters_p005-01.csv','r') as csvfile:
             
             
         afix = a
-        b = a
+        b = max(a,b_min)
         memory_numbers = [b,a,a,b,b,a,a,b]
         
         data = memb.get_statistics(memory_numbers = memory_numbers,
