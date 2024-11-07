@@ -463,12 +463,13 @@ def get_statistics(memory_numbers = np.full(8,1),
 
 if __name__ == "__main__":
 
-    """simulation parameters"""
+    """simulation parameters, to be adapted"""
     memory_numbers = [1,1,1,1,1,1,1,1]
     generation_probability=0.01
     swapping_probability=1
     number_of_repetitions=100   
     
+    """simulation"""
     element_numbers = int(len(memory_numbers)/2) 
 
     data = get_statistics(memory_numbers = memory_numbers,
@@ -476,6 +477,8 @@ if __name__ == "__main__":
                           swapping_probability=swapping_probability,
                           number_of_repetitions=number_of_repetitions)
                           
+    
+    """printing results"""
     print("simulation parameters: \n generation probability =  ", generation_probability, "\n swapping probability = ",swapping_probability , "\n repeater chain length: ", element_numbers)
     
     print("AWT simulation: ", data[0], "+-", data[1])
