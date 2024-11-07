@@ -39,8 +39,8 @@ with open('./Temp/saturation_parameters_p005-01_merged.csv','r') as csvfile:
         #print(gen_prob, sw_prob, mean_inf, error_inf, number_of_repetitions)
         #element_numbers, gen_prob, sw_prob, data[0], data[1], number_of_repetitions, afix, bfix, mean_inf, error_inf, (data[0]-mean_inf)/mean_inf
         
-        mean_previous = mean_inf
-        error_previous = error_inf 
+        #mean_previous = mean_inf
+        #error_previous = error_inf 
 
     
         a = a_min
