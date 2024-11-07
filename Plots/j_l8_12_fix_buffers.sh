@@ -1,9 +1,9 @@
 #!/bin/bash
-#SBATCH --time=1-00:00:00
+#SBATCH --time=5-00:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=16
 #SBATCH --mem 128000
-#SBATCH --partition=medium
+#SBATCH --partition=long
 
 source ~/.bashrc
 
@@ -14,5 +14,5 @@ echo "Number of tasks: "
 echo $SLURM_NTASKS
 
 
-python3 compare_fixed_buffers_g3.py 
+python3 compare_fixed_buffers2.py 
 
