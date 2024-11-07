@@ -44,7 +44,7 @@ plt.rcParams['font.size'] = '7' #default = 10
 
 """get data from file"""
 
-data = np.genfromtxt('Temp/saturation_parameters_p005-01_merged.csv',delimiter=',')
+data = np.genfromtxt('Temp/saturation_parameters_p005-01_v2_merged.csv',delimiter=',')
 
 gen_prob=data[:,1]
 sw_prob =data[:,2]
@@ -52,12 +52,6 @@ mean_inf=data[:,8]
 ln_mean_inf = np.log10(mean_inf)
 afix=data[:,6]
 bfix=data[:,7]
-
-data2 = np.genfromtxt('infty_buffer3_p005-01.csv',delimiter=',')
-
-gen_prob2=data2[:,1]
-sw_prob2 =data2[:,2]
-mean_inf2=data2[:,3]
 
 
 """prepare for plots"""
@@ -72,19 +66,8 @@ A=afix.reshape(len(sw_prob),len(gen_prob))
 B=bfix.reshape(len(sw_prob),len(gen_prob))
 #print("nachher:", gen_prob)
 
-gen_prob2=np.unique(gen_prob2)
-sw_prob2=np.unique(sw_prob2)
-G2,S2 = np.meshgrid(gen_prob2,sw_prob2)
-Mi2=mean_inf2.reshape(len(sw_prob2),len(gen_prob2))
 
 
-#print(A)
-
-#plt.pcolormesh(G,S,Mi)
-
-#x, y = np.meshgrid(gen_prob, sw_prob)
-#z = np.array(afix)
-#z.resize(np.shape(x))
 
 
 fig = plt.figure()
@@ -95,16 +78,16 @@ ax1 = fig.add_subplot(121, projection='3d')
 
 #ax1.plot(gen_prob,sw_prob,afix,'.', label='a')
 #ax1.plot(gen_prob,sw_prob,bfix,'r+', label='b')
-ax1.plot_surface(G, S, Mi, edgecolor='royalblue', lw=0.5, rstride=8, cstride=8, alpha=0.3)
-#ax1.plot_surface(G, S, A, edgecolor='royalblue', lw=0.5, rstride=8, cstride=8, alpha=0.3)    
+#ax1.plot_surface(G, S, Mi, edgecolor='royalblue', lw=0.5, rstride=8, cstride=8, alpha=0.3)
+ax1.plot_surface(G, S, A, edgecolor='royalblue', lw=0.5, rstride=8, cstride=8, alpha=0.3)    
 #ax1.plot_surface(G, S, B, edgecolor='royalblue', lw=0.5, rstride=8, cstride=8, alpha=0.3)                            
 
 
 ax1.set_xlabel('p')
 ax1.set_ylabel('a')
 ax1.zaxis.set_rotate_label(False)
-ax1.set_zlabel('$log_{10}(T)$',rotation='horizontal')
-#ax1.set_zlabel('$b^{(2)}$',rotation='horizontal')
+#ax1.set_zlabel('$log_{10}(T)$',rotation='horizontal')
+ax1.set_zlabel('$b^{(1)}$',rotation='horizontal')
 #ax1.legend()
 
 
@@ -112,17 +95,8 @@ ele=30
 azm=30
 ax1.view_init(elev=ele, azim=azm)
 
-##ax2 = fig.add_subplot(122, projection='3d')
-#ax2.plot(gen_prob,sw_prob,mean,'r+', label='mean')
-#ax2.plot(gen_prob,sw_prob,mean_inf,'.', label='mean inf')
-##ax2.plot_surface(G2, S2, Mi2, edgecolor='royalblue', lw=0.5, rstride=8, cstride=8,
-##                alpha=0.3)
 
-#ax2.set_xlabel('p')
-#ax2.set_ylabel('a')
-#ax2.legend()
-
-fig.savefig("nwB_saturation_parameters_wt.pdf", bbox_inches='tight')
+fig.savefig("nwB_saturation_parameters_v2_a.pdf", bbox_inches='tight')
 
 plt.show()
 
