@@ -23,7 +23,7 @@ file_name = "saturation_parameters_p005-01_v2_merged.csv"
 element_numbers = 4
 
 
-with open('./Data/saturation_parameters_p05-1_merged.csv','r') as csvfile:
+with open('./Temp/saturation_parameters_p05-1_merged.csv','r') as csvfile:
     plots=csv.reader(csvfile, delimiter=',')
     for x in range(153):
         next(plots) #damit die erste zeile nicht eingelesen werden
