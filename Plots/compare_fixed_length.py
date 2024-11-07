@@ -14,7 +14,7 @@ Goal of this program:
 #memory_numbers = [2,1,1,2,2,1,1,2]
 #generation_probability=0.01
 #swapping_probability = 0.5
-number_of_repetitions_original= 2000 
+number_of_repetitions_original= 10
 #element_numbers = 4
 
 chain_length_power = [1,2,3,4]
