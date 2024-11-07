@@ -17,20 +17,38 @@ max_len = 100
 total_buffer = 32
 number_of_repetitions_original= 10
 
-# memory_numbers_list = [3,3,3,3,7,7,3,3] # distribution of memory buffers
-# segment_lengths = [20,20,40,20] # distance of each segment
-
-memory_numbers_list = [4,4,4,4,4,4,4,4] # distribution of memory buffers
+memory_numbers_list = [3,3,3,3,7,7,3,3] # distribution of memory buffers
 segment_lengths = [20,20,40,20] # distance of each segment
+file_name_list = ["compare_fixed_length_32-4_a6_20_40_37.csv"]
+
+# memory_numbers_list = [7,7,3,3,3,3,3,3] # distribution of memory buffers
+# segment_lengths = [40,20,20,20] # distance of each segment
+# file_name_list = ["compare_fixed_length_32-4_40_20_73.csv"]
+
+# memory_numbers_list = [3,3,3,3,7,7,3,3] # distribution of memory buffers
+# segment_lengths = [15,15,55,15] # distance of each segment
+# file_name_list = ["compare_fixed_length_32-4_15_55_37.csv"]
+
+# memory_numbers_list = [4,4,4,4,4,4,4,4] # distribution of memory buffers
+# segment_lengths = [20,20,40,20] # distance of each segment
+# file_name_list = ["compare_fixed_length_32-4_a11_20_40.csv"]
+
+# memory_numbers_list = [4,4,4,4,4,4,4,4] # distribution of memory buffers
+# segment_lengths = [15,15,55,15] # distance of each segment
+# file_name_list = ["compare_fixed_length_32-4_15_55.csv"]
+
+# memory_numbers_list = [4,4,4,4,4,4,4,4] # distribution of memory buffers
+# segment_lengths = [25,25,25,25] # distance of each segment
+# file_name_list = ["compare_fixed_length_32-4_25_25.csv"]
 
 num_segments = len(memory_numbers_list)/2 # number of segments
 
 # chain_length_power = [1,2,3,4]
 
-file_name_list = ["compare_fixed_length_32-4_dl.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
+# file_name_list = ["compare_fixed_length_32-4_25_25.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
 
 def gen_prob_function(length):
-    Latt = 22
+    Latt = 6
     return np.exp(-length/Latt)   
 
 # gen_prob = gen_prob_function(max_len/ns)
@@ -73,19 +91,6 @@ for m in range(1):
                           number_of_repetitions=number_of_repetitions)
 
 
-        #print("length=", element_numbers ,",generation_prob=", gen_prob,", swapping_prob=", sw_prob, "AWT=", data[0], "+-", data[1])              
-        
-
-
-        
-
-
-
-        # "Daten in csv schreiben"
-        # with open(file_name, mode='a') as csvfile:
-        #     csvfile_writer = csv.writer(csvfile, delimiter=',')
-        #     csvfile_writer.writerow([memory_numbers_list,num_segments, generation_probability, sw_prob, data[0], data[1], number_of_repetitions, data[1]/data[0]]) #data[0] is mean and [1] is error of AWT
-
 
         # Check if the file exists
         file_exists = os.path.exists(file_name)
@@ -97,13 +102,13 @@ for m in range(1):
             # If the file doesn't exist, write the header
             if not file_exists:
                 csvfile_writer.writerow([
-                    'memory_numbers_list', 'num_segments', 'generation_probability', 
+                    'memory_numbers_list', 'num_segments', 'segment_lengths', 'generation_probability', 
                     'swapping_probability', 'AWT_mean', 'AWT_error', 'number_of_repetitions', 'AWT_ratio'
                 ])
 
             # Write the data row
             csvfile_writer.writerow([
-                memory_numbers_list, num_segments, generation_probability, sw_prob, 
+                memory_numbers_list, num_segments, segment_lengths, generation_probability, sw_prob, 
                 data[0], data[1], number_of_repetitions, data[1] / data[0]
             ])
 

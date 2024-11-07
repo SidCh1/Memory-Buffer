@@ -6,7 +6,7 @@ of the repeater chain. For each run, it prints the waiting time. The parameters 
 changed at the bottom of this file.
 
 Date: 07 Nov 2024
-Author: Siddhu
+Author: Lina and Siddhu
 
 
 
