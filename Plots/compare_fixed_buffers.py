@@ -12,15 +12,15 @@ Goal of this program:
 """simulation parameters"""
 #memory_numbers = [2,1,1,2,2,1,1,2]
 #generation_probability=0.01
-swapping_probability = 0.5
+swapping_probability = 0.01
 number_of_repetitions_original=2000 
 element_numbers = 4
 
 buffers = [[2,2,2], [1,2,3], [1,1,4]]
 
-file_name_list = ["compare_fixed_buffers_l8_2-2-2_a5_pgros.csv", 
-"compare_fixed_buffers_l8_1-2-3_a5_pgros.csv", 
-"compare_fixed_buffers_l8_1-1-4_a5_pgros.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
+file_name_list = ["compare_fixed_buffers_l8_2-2-2_a01_pgros.csv", 
+"compare_fixed_buffers_l8_1-2-3_a01_pgros.csv", 
+"compare_fixed_buffers_l8_1-1-4_a01_pgros.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
 
 
 sw_prob = swapping_probability
