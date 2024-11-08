@@ -18,11 +18,11 @@ max_len = 200
 total_buffer = 32
 number_of_repetitions_original = 10
 Latt = 11
-s1 = 20
-s2 = 40
-s3 = 15
-s4 = 55
-s5 = 25
+s1 = 40
+s2 = 80
+s3 = 30
+s4 = 110
+s5 = 50
 
 # Define the new directory for storing CSV files
 output_dir = os.path.join(os.path.dirname(__file__), "Data_200k_32b_4s_a11")
@@ -44,7 +44,7 @@ configurations = [
     {
         "memory_numbers_list": [4, 4, 4, 4, 4, 4, 4, 4],
         "segment_lengths": [s1, s1, s2, s1],
-        "file_name": "compare_fixed_length_32-4_a11_20_40_37_200km.csv",
+        "file_name": "compare_fixed_length_32-4_a11_20_40_44_200km.csv",
     },
     {
         "memory_numbers_list": [4, 4, 4, 4, 4, 4, 4, 4],
