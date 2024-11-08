@@ -13,48 +13,58 @@ Goal of this program:
 """
 
 """simulation parameters"""
-
-max_len = 200
+k = 4
+b1 = 30
+b2 = 20
+b3 = 10
+b4 = 40
+b5 = 25
+max_len = k * 100
 total_buffer = 32
 number_of_repetitions_original = 10
-Latt = 11
-s1 = 40
-s2 = 80
-s3 = 30
-s4 = 110
-s5 = 50
+Latt = 22
+s1 = k * b1
+s2 = k * b2
+s3 = k * b3
+s4 = k * b4
+s5 = k * b5
 
 # Define the new directory for storing CSV files
-output_dir = os.path.join(os.path.dirname(__file__), "Data_200k_32b_4s_a11")
+output_dir = os.path.join(os.path.dirname(__file__), "Data_400k_32b_4s_a22_all_diff")
 os.makedirs(output_dir, exist_ok=True)  # Create the directory if it doesn't exist
 
 
 # Define the different configurations as a list of dictionaries
 configurations = [
     {
-        "memory_numbers_list": [3, 3, 3, 3, 7, 7, 3, 3],
-        "segment_lengths": [s1, s1, s2, s1],
-        "file_name": "compare_fixed_length_32-4_a11_20_40_37_200km.csv",
+        "memory_numbers_list": [5, 5, 3, 3, 2, 2, 6, 6],
+        "segment_lengths": [s1, s2, s3, s4],
+        "file_name": "compare_fixed_length_32-4_a22_5326_400km.csv",
     },
     {
-        "memory_numbers_list": [3, 3, 3, 3, 7, 7, 3, 3],
-        "segment_lengths": [s3, s3, s4, s3],
-        "file_name": "compare_fixed_length_32-4_a11_15_55_37_200km.csv",
-    },
-    {
-        "memory_numbers_list": [4, 4, 4, 4, 4, 4, 4, 4],
-        "segment_lengths": [s1, s1, s2, s1],
-        "file_name": "compare_fixed_length_32-4_a11_20_40_44_200km.csv",
+        "memory_numbers_list": [3, 3, 5, 5, 6, 6, 2, 2],
+        "segment_lengths": [s1, s2, s3, s4],
+        "file_name": "compare_fixed_length_32-4_a22_3562_400km.csv",
     },
     {
         "memory_numbers_list": [4, 4, 4, 4, 4, 4, 4, 4],
-        "segment_lengths": [s3, s3, s4, s3],
-        "file_name": "compare_fixed_length_32-4_a11_15_55_44_200km.csv",
+        "segment_lengths": [s1, s2, s3, s4],
+        "file_name": "compare_fixed_length_32-4_a22_4444_400km.csv",
     },
+    # {
+    #     "memory_numbers_list": [4, 4, 4, 4, 4, 4, 4, 4],
+    #     "segment_lengths": [s3, s3, s4, s3],
+    #     "file_name": "compare_fixed_length_32-4_a22_15_55_44_200km.csv",
+    # },
     {
         "memory_numbers_list": [4, 4, 4, 4, 4, 4, 4, 4],
         "segment_lengths": [s5, s5, s5, s5],
-        "file_name": "compare_fixed_length_32-4_a11_25_25_44_200km.csv",
+        "file_name": "compare_fixed_length_32-4_a22_25_25_44_400km.csv",
+    },
+    {
+        "memory_numbers_list": [2, 2, 2, 2, 2, 2, 2, 2],
+        "segment_lengths": [s5, s5, s5, s5],
+        "file_name": "compare_fixed_length_16-4_a22_25_25_44_400km.csv",
     },
 ]
 
