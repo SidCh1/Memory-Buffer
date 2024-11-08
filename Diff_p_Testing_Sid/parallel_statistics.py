@@ -25,7 +25,7 @@ s4 = 55
 s5 = 25
 
 # Define the new directory for storing CSV files
-output_dir = os.path.join(os.path.dirname(__file__), "Plots_200k_32b_4s_a11")
+output_dir = os.path.join(os.path.dirname(__file__), "Data_200k_32b_4s_a11")
 os.makedirs(output_dir, exist_ok=True)  # Create the directory if it doesn't exist
 
 
