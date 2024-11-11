@@ -37,7 +37,7 @@ def plot_csv_data(file_list):
     # Labels and title
     plt.xlabel("Swapping Probability")
     plt.ylabel("AWT Mean")
-    plt.title("Comparison of AWT Mean vs Swapping Probability")
+    plt.title("AWT Mean vs Swapping Probability")
 
     # Show legend
     plt.legend()
@@ -50,16 +50,20 @@ def plot_csv_data(file_list):
 if __name__ == "__main__":
     # Path to your CSV files
     # path = "/Users/thaslimjaglurbasheer/Documents/Siddhu/Memory_Buffer/memory-buffer/Diff_p_Testing_Sid"
-    path = "/home/siddhu/Documents/lina_project/memory-buffer/Diff_p_Testing_Sid/Data_200k_32b_4s_a11"
+    path = "/home/siddhu/Documents/lina_project/memory-buffer/Diff_p_Testing_Sid/Data_test_dl"
     # List of CSV files
     csv_files = [
         # 'compare_fixed_length_32-4_20_40_37.csv',
         # 'compare_fixed_length_32-4_20_40.csv',
         # 'compare_fixed_length_32-4_40_20_73.csv',
-        "compare_fixed_length_32-4_a11_20_40_44_200km.csv",
-        "compare_fixed_length_32-4_a11_20_40_37_200km.csv",
-        "compare_fixed_length_32-4_a11_25_25_44_200km.csv",
-        "compare_fixed_length_16-4_a11_25_25_44_200km.csv",
+        # "compare_fixed_length_32-4_a11_20_40_44_200km.csv",
+        # "compare_fixed_length_32-4_a11_20_40_37_200km.csv",
+        # "compare_fixed_length_32-4_a11_25_25_44_200km.csv",
+        # "compare_fixed_length_16-4_a11_25_25_44_200km.csv",
+        "compare_fixed_length_16-4_a22_25_25_44_100km.csv",
+        "compare_fixed_length_32-4_a22_25_25_44_200km.csv",
+        # "compare_fixed_length_32-8_a22_313_200km.csv",
+        # "compare_fixed_length_32-8_a22_2222_200km.csv",
     ]
 
     file_list = [os.path.join(path, file) for file in csv_files]
