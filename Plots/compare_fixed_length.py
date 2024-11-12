@@ -17,12 +17,15 @@ Goal of this program:
 number_of_repetitions_original= 2000 
 #element_numbers = 4
 
-chain_length_power = [1,2,3,4]
+chain_length_power = [1,2,3,4,5]
 
-max_len = 100
-total_buffer = 32
+max_len = 200
+total_buffer = 64
 
-file_name_list = ["compare_fixed_length_32-2.csv", "compare_fixed_length_32-4.csv", "compare_fixed_length_32-8.csv", "compare_fixed_length_32-16.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
+file_name_list = ["compare_fixed_length_200_64-2.csv", "compare_fixed_length_200_64-4.csv", 
+"compare_fixed_length_200_64-8.csv", 
+"compare_fixed_length_200_64-16.csv",
+"compare_fixed_length_200_64-32.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
 
 def prob_function(length):
     Latt = 22
@@ -31,21 +34,23 @@ def prob_function(length):
 
 
 dataa = np.linspace(0.1,1,46)
+#dataa = np.linspace(0.5,1,2)
 
 
 """vary distribution of memory_numbers"""
 
-for m in chain_length_power:
+
+    
+for j in range(len(chain_length_power)):
+    m = chain_length_power[j]
     a = int(total_buffer*(2**(-m-1)))
     memory_numbers = [a] * 2**(m+1)
     element_numbers = 2**m
-    file_name = file_name_list[m-1]
+    file_name = file_name_list[j]
     
-
+    gen_prob = prob_function(max_len/(2**(m)))
     
-    gen_prob = prob_function(max_len/(2**(m-1)))
-    
-    #print(memory_numbers, file_name, max_len/(2**(m-1)), gen_prob)
+    print(memory_numbers, file_name, max_len/(2**(m)), gen_prob)
     
     number_of_repetitions = number_of_repetitions_original
 
