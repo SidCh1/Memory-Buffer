@@ -68,7 +68,7 @@ with open('./Data/saturation_parameters_p05-1_v3.csv','r') as csvfile:
                          
         
         
-            while abs(data[0] - mean_inf) >  error_inf:
+            while abs(data[0] - mean_inf) >  0.01*mean_inf:
                 #print("Differenz vorher: ", abs(mean_previous - data[0]), error_previous)
                 a += 1
                 #print(a)
@@ -99,7 +99,7 @@ with open('./Data/saturation_parameters_p05-1_v3.csv','r') as csvfile:
             #mean_previous = mean_inf
             #error_previous = error_inf                  
                           
-            while abs(data[0] - mean_inf) >  error_inf:
+            while abs(data[0] - mean_inf) >  0.01*mean_inf:
                 #print("Differenz vorher: ", abs(mean_previous - data[0]), error_previous)
                 b += 1
                 #print(b)
@@ -127,7 +127,7 @@ with open('./Data/saturation_parameters_p05-1_v3.csv','r') as csvfile:
             "Daten in csv schreiben"
             with open(file_name, mode='a') as csvfile:
                 csvfile_writer = csv.writer(csvfile, delimiter=',')
-                csvfile_writer.writerow([element_numbers, gen_prob, sw_prob, data[0], data[1], number_of_repetitions, afix, bfix, mean_inf, error_inf, (data[0]-mean_inf)/mean_inf])
+                csvfile_writer.writerow([element_numbers, gen_prob, sw_prob, data[0], data[1], number_of_repetitions, afix, bfix, mean_inf, error_inf, (data[0]-mean_inf)/mean_inf, hier, error_inf/mean_inf])
 
     
 
