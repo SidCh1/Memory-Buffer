@@ -44,7 +44,7 @@ plt.rcParams['font.size'] = '7' #default = 10
 
 """get data from file"""
 
-data = np.genfromtxt('saturation_parameters_p05-1_v3.csv',delimiter=',')
+data = np.genfromtxt('saturation_parameters_diff001_p05-1.csv',delimiter=',')
 
 gen_prob=data[:,1]
 sw_prob =data[:,2]
@@ -78,16 +78,16 @@ ax1 = fig.add_subplot(121, projection='3d')
 
 #ax1.plot(gen_prob,sw_prob,afix,'.', label='a')
 #ax1.plot(gen_prob,sw_prob,bfix,'r+', label='b')
-ax1.plot_surface(G, S, Mi, edgecolor='royalblue', lw=0.5, rstride=8, cstride=8, alpha=0.3)
-#ax1.plot_surface(G, S, A, edgecolor='royalblue', lw=0.5, rstride=8, cstride=8, alpha=0.3)    
+#ax1.plot_surface(G, S, Mi, edgecolor='royalblue', lw=0.5, rstride=8, cstride=8, alpha=0.3)
+ax1.plot_surface(G, S, A, edgecolor='royalblue', lw=0.5, rstride=8, cstride=8, alpha=0.3)    
 #ax1.plot_surface(G, S, B, edgecolor='royalblue', lw=0.5, rstride=8, cstride=8, alpha=0.3)                            
 
 
 ax1.set_xlabel('p')
 ax1.set_ylabel('a')
 ax1.zaxis.set_rotate_label(False)
-ax1.set_zlabel('$log_{10}(T)$',rotation='horizontal')
-#ax1.set_zlabel('$b^{(2)}$',rotation='horizontal')
+#ax1.set_zlabel('$log_{10}(T)$',rotation='horizontal')
+ax1.set_zlabel('$b^{(2)}$',rotation='horizontal')
 #ax1.legend()
 
 
@@ -96,7 +96,7 @@ azm=30
 ax1.view_init(elev=ele, azim=azm)
 
 
-fig.savefig("nwB_saturation_parameters_v3_wt_g.pdf", bbox_inches='tight')
+fig.savefig("nwB_saturation_parameters_test_v4_b_g.pdf", bbox_inches='tight')
 
 plt.show()
 
