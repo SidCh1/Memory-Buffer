@@ -26,7 +26,8 @@ file_name_list = [#"compare_fixed_length_400_32-2.csv",
 #"compare_fixed_length_400_32-4.csv", 
 "compare_fixed_length_200_64-8-2.csv", 
 #"compare_fixed_length_200_64-16.csv",
-#"compare_fixed_length_200_64-32.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
+#"compare_fixed_length_200_64-32.csv"
+] ### file names: compare_fixed_buffers_const-bfix_.csv
 
 def prob_function(length):
     Latt = 22
