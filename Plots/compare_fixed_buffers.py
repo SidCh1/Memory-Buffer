@@ -17,10 +17,12 @@ number_of_repetitions_original=2000
 element_numbers = 4
 
 buffers = [[2,2,2], [1,2,3], [1,1,4]]
+buffers = [[1,2,3]]
 
-file_name_list = ["compare_fixed_buffers_l8_2-2-2_a1_pgros.csv", 
+file_name_list = [#"compare_fixed_buffers_l8_2-2-2_a1_pgros.csv", 
 "compare_fixed_buffers_l8_1-2-3_a1_pgros.csv", 
-"compare_fixed_buffers_l8_1-1-4_a1_pgros.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
+#"compare_fixed_buffers_l8_1-1-4_a1_pgros.csv"
+] ### file names: compare_fixed_buffers_const-bfix_.csv
 
 
 sw_prob = swapping_probability
