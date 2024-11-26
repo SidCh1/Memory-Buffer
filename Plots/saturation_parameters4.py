@@ -19,7 +19,7 @@ Goal of this program:
 #datap = [0.1] # np.linspace(0.05,0.1,51)
 #sw_prob_list = [0.5] #np.linspace(0.1,1,91)
 
-file_name = "saturation_parameters_diff001_p05-1_v2-3.csv"
+file_name = "saturation_parameters_diff001_p05-1_v2.csv"
 element_numbers = 4
 
 
@@ -54,10 +54,11 @@ with open('./Data/saturation_parameters_diff001_p05-1.csv','r') as csvfile:
         
         else:
 
-            #print("new round: a=1")
-            a = 1
+            
+            a = 10
             b = 10000
             memory_numbers = [b,a,a,b,b,a,a,b]
+            #print("new round: a=", a)
 
 
             data = memb.get_statistics(memory_numbers = memory_numbers,
@@ -71,7 +72,7 @@ with open('./Data/saturation_parameters_diff001_p05-1.csv','r') as csvfile:
         
             while abs(data[0] - mean_inf) >  0.01*mean_inf:
                 #print("Differenz vorher: ", abs(mean_previous - data[0]), error_previous)
-                a += 1
+                a += 1 
                 #print("a=",a)
                 memory_numbers = [b,a,a,b,b,a,a,b] 
                 #print(memory_numbers)
@@ -103,7 +104,7 @@ with open('./Data/saturation_parameters_diff001_p05-1.csv','r') as csvfile:
                           
             while abs(data[0] - mean_inf) >  0.01*mean_inf:
                 #print("Differenz vorher: ", abs(mean_previous - data[0]), error_previous)
-                b += 1
+                b += 1 
                 #print("b=", b)
                 memory_numbers = [b,a,a,b,b,a,a,b] 
                 #print(memory_numbers)
@@ -129,7 +130,7 @@ with open('./Data/saturation_parameters_diff001_p05-1.csv','r') as csvfile:
             "Daten in csv schreiben"
             with open(file_name, mode='a') as csvfile:
                 csvfile_writer = csv.writer(csvfile, delimiter=',')
-                csvfile_writer.writerow([element_numbers, gen_prob, sw_prob, data[0], data[1], number_of_repetitions, afix, bfix, mean_inf, error_inf, (data[0]-mean_inf)/mean_inf, hier, error_inf/mean_inf])
+                csvfile_writer.writerow([element_numbers, gen_prob, sw_prob, data[0], data[1], number_of_repetitions, afix, bfix, mean_inf, error_inf, (data[0]-mean_inf)/mean_inf, error_inf/mean_inf])
 
     
 
