@@ -19,7 +19,7 @@ Goal of this program:
 #datap = [0.1] # np.linspace(0.05,0.1,51)
 #sw_prob_list = [0.5] #np.linspace(0.1,1,91)
 
-file_name = "saturation_parameters_diff001_p05-1_v2-2.csv"
+file_name = "saturation_parameters_diff001_p05-1_v2-3.csv"
 element_numbers = 4
 
 
@@ -54,6 +54,7 @@ with open('./Data/saturation_parameters_diff001_p05-1.csv','r') as csvfile:
         
         else:
 
+            #print("new round: a=1")
             a = 1
             b = 10000
             memory_numbers = [b,a,a,b,b,a,a,b]
@@ -71,7 +72,7 @@ with open('./Data/saturation_parameters_diff001_p05-1.csv','r') as csvfile:
             while abs(data[0] - mean_inf) >  0.01*mean_inf:
                 #print("Differenz vorher: ", abs(mean_previous - data[0]), error_previous)
                 a += 1
-                #print(a)
+                #print("a=",a)
                 memory_numbers = [b,a,a,b,b,a,a,b] 
                 #print(memory_numbers)
             
@@ -90,6 +91,7 @@ with open('./Data/saturation_parameters_diff001_p05-1.csv','r') as csvfile:
             afix = a
             b = a #max(a,b_min)
             memory_numbers = [b,a,a,b,b,a,a,b]
+            #print("second part: b=a=", b)
         
             data = memb.get_statistics(memory_numbers = memory_numbers,
                           generation_probability=gen_prob,
@@ -102,7 +104,7 @@ with open('./Data/saturation_parameters_diff001_p05-1.csv','r') as csvfile:
             while abs(data[0] - mean_inf) >  0.01*mean_inf:
                 #print("Differenz vorher: ", abs(mean_previous - data[0]), error_previous)
                 b += 1
-                #print(b)
+                #print("b=", b)
                 memory_numbers = [b,a,a,b,b,a,a,b] 
                 #print(memory_numbers)
             
