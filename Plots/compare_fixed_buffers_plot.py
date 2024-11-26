@@ -30,7 +30,7 @@ null=[]
 
 
 #with open('./Data/compare_fixed_buffers_8-4_a5_pgros.csv','r') as csvfile:
-with open('./Data/compare_fixed_buffers_8-4_a9.csv','r') as csvfile:
+with open('compare_fixed_buffers_l8_1-1-4_a5_pgros.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
@@ -42,7 +42,7 @@ with open('./Data/compare_fixed_buffers_8-4_a9.csv','r') as csvfile:
 
 
 #with open('./Data/compare_fixed_buffers_8-4_a5_pgros.csv','r') as csvfile:
-with open('./Data/compare_fixed_buffers_8-5_a9.csv','r') as csvfile:
+with open('compare_fixed_buffers_l8_1-2-3_a5_pgros.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
@@ -54,7 +54,7 @@ with open('./Data/compare_fixed_buffers_8-5_a9.csv','r') as csvfile:
 
 
 #with open('./Data/compare_fixed_buffers_8-6_a5_pgros.csv','r') as csvfile:
-with open('./Data/compare_fixed_buffers_8-6_a9.csv','r') as csvfile:
+with open('compare_fixed_buffers_l8_2-2-2_a5_pgros.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
@@ -77,11 +77,11 @@ with open('./Data/compare_fixed_buffers_8-7_a9.csv','r') as csvfile:
 		#bfix4.append(int(row[7]))
 
 
-plt.plot(gen_prob7,mean7, label=r'b^{(1)} = 1, b^{(2)} = 7')
-plt.plot(gen_prob6,mean6, linestyle='dotted', label=r'b^{(1)} = 2, b^{(2)} = 6') #
-plt.plot(gen_prob5,mean5, linestyle='dashed', label=r'b^{(1)} = 3, b^{(2)} = 5') #
-plt.plot(gen_prob4,mean4, linestyle='dashdot', label=r'b^{(1)} = 4, b^{(2)} = 4') #
-plt.plot(null,null,'.', label=r'$a = 0.9$')
+#plt.plot(gen_prob7,mean7, label=r'b^{(1)} = 1, b^{(2)} = 7')
+plt.plot(gen_prob6,mean6, linestyle='dotted', label=r'b^{(1)} = 2, b^{(2)} = 2, b^{(2)} = 2') #
+plt.plot(gen_prob5,mean5, linestyle='dashed', label=r'b^{(1)} = 1, b^{(2)} = 2, b^{(2)} = 3') #
+plt.plot(gen_prob4,mean4, linestyle='dashdot', label=r'b^{(1)} = 1, b^{(2)} = 1, b^{(2)} = 4') #
+plt.plot(null,null,'.', label=r'$a = 0.5$')
 
 
 
@@ -108,7 +108,7 @@ plt.legend(loc=1,frameon=False) #loc=4 fixiert die position
 plt.yscale('log')
 
 #plt.savefig("compare_fixed_buffers.pdf", dpi=150)
-plt.savefig("compare_fixed_buffers_8_a9.pdf", bbox_inches='tight')
+plt.savefig("compare_fixed_buffers_l8_a5.pdf", bbox_inches='tight')
 
 plt.show()
 

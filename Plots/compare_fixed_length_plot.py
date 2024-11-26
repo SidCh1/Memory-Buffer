@@ -43,7 +43,7 @@ with open('./Data/compare_fixed_length_200_64-4.csv','r') as csvfile:
 		sw_prob4.append(float(row[2])) 
 		mean4.append(float(row[3]))
 		
-with open('compare_fixed_length_200_64-8.csv','r') as csvfile:
+with open('compare_fixed_length_200_64-8-2.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
