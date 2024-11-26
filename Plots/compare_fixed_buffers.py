@@ -12,7 +12,7 @@ Goal of this program:
 """simulation parameters"""
 #memory_numbers = [2,1,1,2,2,1,1,2]
 #generation_probability=0.01
-swapping_probability = 0.01
+swapping_probability = 0.1
 number_of_repetitions_original=2000 
 element_numbers = 4
 
