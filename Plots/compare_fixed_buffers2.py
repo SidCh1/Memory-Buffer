@@ -12,18 +12,18 @@ Goal of this program:
 """simulation parameters"""
 #memory_numbers = [2,1,1,2,2,1,1,2]
 #generation_probability=0.01
-swapping_probability = 0.01
+swapping_probability = 0.5
 number_of_repetitions_original=2000 
 element_numbers = 4
 
 buffers = [[4,4,4], [2,4,6], [2,5,5], [2,3,7], [1,1,10],[1,5,6]]
 
-file_name_list = ["compare_fixed_buffers_l8_4-4-4_a01_pgros.csv", 
-"compare_fixed_buffers_l8_2-4-6_a01_pgros.csv", 
-"compare_fixed_buffers_l8_2-5-5_a01_pgros.csv",
-"compare_fixed_buffers_l8_2-3-7_a01_pgros.csv",
-"compare_fixed_buffers_l8_1-1-10_a01_pgros.csv",
-"compare_fixed_buffers_l8_1-5-6_a01_pgros.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
+file_name_list = ["compare_fixed_buffers_l8_4-4-4_a5_pgros.csv", 
+"compare_fixed_buffers_l8_2-4-6_a5_pgros.csv", 
+"compare_fixed_buffers_l8_2-5-5_a5_pgros.csv",
+"compare_fixed_buffers_l8_2-3-7_a5_pgros.csv",
+"compare_fixed_buffers_l8_1-1-10_a5_pgros.csv",
+"compare_fixed_buffers_l8_1-5-6_a5_pgros.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
 
 
 sw_prob = swapping_probability
