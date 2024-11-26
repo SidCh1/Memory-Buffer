@@ -17,15 +17,16 @@ Goal of this program:
 number_of_repetitions_original= 2000 
 #element_numbers = 4
 
-chain_length_power = [2,3,4]
+chain_length_power = [4,5]
 
-max_len = 400
-total_buffer = 32
+max_len = 200
+total_buffer = 64
 
-file_name_list = [#"compare_fixed_length_400_32-2.csv", "compare_fixed_length_400_32-4.csv", 
-"compare_fixed_length_400_32-8.csv", 
-"compare_fixed_length_400_32-16.csv",
-"compare_fixed_length_400_32-32.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
+file_name_list = [#"compare_fixed_length_400_32-2.csv",
+#"compare_fixed_length_400_32-4.csv", 
+#"compare_fixed_length_200_64-8.csv", 
+"compare_fixed_length_200_64-16.csv",
+"compare_fixed_length_200_64-32.csv"] ### file names: compare_fixed_buffers_const-bfix_.csv
 
 def prob_function(length):
     Latt = 22
