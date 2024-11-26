@@ -19,7 +19,7 @@ Goal of this program:
 #datap = [0.1] # np.linspace(0.05,0.1,51)
 #sw_prob_list = [0.5] #np.linspace(0.1,1,91)
 
-file_name = "saturation_parameters_diff001_p05-1_v2.csv"
+file_name = "saturation_parameters_diff001_p05-1_v2-2.csv"
 element_numbers = 4
 
 
@@ -47,7 +47,7 @@ with open('./Data/saturation_parameters_diff001_p05-1.csv','r') as csvfile:
         #mean_previous = mean_inf
         #error_previous = error_inf 
         
-        if a_min < 40 and b_min < 40:
+        if a_min < 50 and b_min < 50:
             with open(file_name, mode='a') as csvfile:
                 csvfile_writer = csv.writer(csvfile, delimiter=',')
                 csvfile_writer.writerow([element_numbers, gen_prob, sw_prob, mean, error, number_of_repetitions, a_min, b_min, mean_inf, error_inf, ratio])
