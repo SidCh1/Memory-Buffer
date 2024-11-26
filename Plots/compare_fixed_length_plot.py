@@ -29,35 +29,35 @@ mean32=[]
 
 
 
-with open('./Data/compare_fixed_length_32-2.csv','r') as csvfile:
+with open('./Data/compare_fixed_length_200_64-2.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
 		sw_prob2.append(float(row[2])) 
 		mean2.append(float(row[3]))
 		
-with open('./Data/compare_fixed_length_64-4.csv','r') as csvfile:
+with open('./Data/compare_fixed_length_200_64-4.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
 		sw_prob4.append(float(row[2])) 
 		mean4.append(float(row[3]))
 		
-with open('./Data/compare_fixed_length_64-8.csv','r') as csvfile:
+with open('compare_fixed_length_200_64-8.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
 		sw_prob8.append(float(row[2])) 
 		mean8.append(float(row[3]))
 		
-with open('./Data/compare_fixed_length_64-16.csv','r') as csvfile:
+with open('compare_fixed_length_200_64-16.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
 		sw_prob16.append(float(row[2])) 
 		mean16.append(float(row[3]))
 		
-with open('compare_fixed_length_64-32.csv','r') as csvfile:
+with open('compare_fixed_length_200_64-16.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
@@ -68,15 +68,15 @@ with open('compare_fixed_length_64-32.csv','r') as csvfile:
 
 
 
-#plt.plot(sw_prob2,mean2, label=r'M = 2') #
-#plt.plot(sw_prob4,mean4, linestyle='dotted', label=r'M = 4') #
-#plt.plot(sw_prob8,mean8, linestyle='dashed', label=r'M = 8') #
-#plt.plot(sw_prob16,mean16, linestyle='dashdot', label=r'M = 16') #
+plt.plot(sw_prob2,mean2, label=r'M = 2') #
+plt.plot(sw_prob4,mean4, linestyle='dotted', label=r'M = 4') #
+plt.plot(sw_prob8,mean8, linestyle='dashed', label=r'M = 8') #
+plt.plot(sw_prob16,mean16, linestyle='dashdot', label=r'M = 16') #
 
-plt.plot(sw_prob4,mean4, label=r'M = 4') #
-plt.plot(sw_prob8,mean8, linestyle='dotted', label=r'M = 8') #
-plt.plot(sw_prob16,mean16, linestyle='dashed', label=r'M = 16') #
-plt.plot(sw_prob32,mean32, linestyle='dashdot', label=r'M = 32') #
+#plt.plot(sw_prob4,mean4, label=r'M = 4') #
+#plt.plot(sw_prob8,mean8, linestyle='dotted', label=r'M = 8') #
+#plt.plot(sw_prob16,mean16, linestyle='dashed', label=r'M = 16') #
+#plt.plot(sw_prob32,mean32, linestyle='dashdot', label=r'M = 32') #
 
 
 
@@ -102,7 +102,7 @@ plt.legend(loc=1,frameon=False) #loc=4 fixiert die position
 plt.yscale('log')
 
 #plt.savefig("compare_fixed_buffers.pdf", dpi=150)
-plt.savefig("nwB_compare_fixed_length_64.pdf", bbox_inches='tight')
+plt.savefig("nwB_compare_fixed_length_200_64.pdf", bbox_inches='tight')
 
 plt.show()
 
