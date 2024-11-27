@@ -19,11 +19,11 @@ Goal of this program:
 #datap = [0.1] # np.linspace(0.05,0.1,51)
 #sw_prob_list = [0.5] #np.linspace(0.1,1,91)
 
-file_name = "saturation_parameters_diff001_p05-1_v2.csv"
+file_name = "saturation_parameters_diff001_p05-1_v3.csv"
 element_numbers = 4
 
 
-with open('./Data/saturation_parameters_diff001_p05-1.csv','r') as csvfile:
+with open('./Data/saturation_parameters_diff001_p05-1_v2.csv','r') as csvfile:
     plots=csv.reader(csvfile, delimiter=',')
     #next(plots) #damit die erste zeile nicht eingelesen werden
     for row in plots:
@@ -130,7 +130,7 @@ with open('./Data/saturation_parameters_diff001_p05-1.csv','r') as csvfile:
             "Daten in csv schreiben"
             with open(file_name, mode='a') as csvfile:
                 csvfile_writer = csv.writer(csvfile, delimiter=',')
-                csvfile_writer.writerow([element_numbers, gen_prob, sw_prob, data[0], data[1], number_of_repetitions, afix, bfix, mean_inf, error_inf, (data[0]-mean_inf)/mean_inf, error_inf/mean_inf], "hier")
+                csvfile_writer.writerow([element_numbers, gen_prob, sw_prob, data[0], data[1], number_of_repetitions, afix, bfix, mean_inf, error_inf, (data[0]-mean_inf)/mean_inf)
 
     
 
