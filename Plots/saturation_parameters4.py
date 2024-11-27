@@ -130,7 +130,7 @@ with open('./Data/saturation_parameters_diff001_p05-1_v2.csv','r') as csvfile:
             "Daten in csv schreiben"
             with open(file_name, mode='a') as csvfile:
                 csvfile_writer = csv.writer(csvfile, delimiter=',')
-                csvfile_writer.writerow([element_numbers, gen_prob, sw_prob, data[0], data[1], number_of_repetitions, afix, bfix, mean_inf, error_inf, (data[0]-mean_inf)/mean_inf)
+                csvfile_writer.writerow([element_numbers, gen_prob, sw_prob, data[0], data[1], number_of_repetitions, afix, bfix, mean_inf, error_inf, (data[0]-mean_inf)/mean_inf])
 
     
 
