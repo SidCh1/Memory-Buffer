@@ -44,7 +44,7 @@ plt.rcParams['font.size'] = '7' #default = 10
 
 """get data from file"""
 
-data = np.genfromtxt('./Data/saturation_parameters_diff001_p05-1_v3.csv',delimiter=',',usecols = (0,1,2,3,4,5,6,7,8))
+data = np.genfromtxt('saturation_parameters_diff001_p05-1_v4.csv',delimiter=',',usecols = (0,1,2,3,4,5,6,7,8))
 
 gen_prob=data[:,1]
 sw_prob =data[:,2]
