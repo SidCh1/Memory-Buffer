@@ -23,7 +23,7 @@ file_name = "saturation_parameters_diff001_p05-1_v3.csv"
 element_numbers = 4
 
 
-with open('./Data/saturation_parameters_diff001_p05-1_v2.csv','r') as csvfile:
+with open('./Data/saturation_parameters_diff001_p05-1_v3.csv','r') as csvfile:
     plots=csv.reader(csvfile, delimiter=',')
     #next(plots) #damit die erste zeile nicht eingelesen werden
     for row in plots:
