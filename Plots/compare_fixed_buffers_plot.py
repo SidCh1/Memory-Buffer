@@ -34,7 +34,7 @@ null=[]
 
 
 #with open('./Data/compare_fixed_buffers_8-4_a5_pgros.csv','r') as csvfile:
-with open('compare_fixed_buffers_l8_1-1-10_a5_pgros.csv','r') as csvfile:
+with open('compare_fixed_buffers_l8_1-1-10_a1_pgros.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
@@ -46,7 +46,7 @@ with open('compare_fixed_buffers_l8_1-1-10_a5_pgros.csv','r') as csvfile:
 
 
 #with open('./Data/compare_fixed_buffers_8-4_a5_pgros.csv','r') as csvfile:
-with open('compare_fixed_buffers_l8_1-5-6_a5_pgros.csv','r') as csvfile:
+with open('compare_fixed_buffers_l8_1-5-7_a1_pgros.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
@@ -58,7 +58,7 @@ with open('compare_fixed_buffers_l8_1-5-6_a5_pgros.csv','r') as csvfile:
 
 
 #with open('./Data/compare_fixed_buffers_8-6_a5_pgros.csv','r') as csvfile:
-with open('compare_fixed_buffers_l8_2-3-7_a5_pgros.csv','r') as csvfile:
+with open('compare_fixed_buffers_l8_2-3-7_a1_pgros.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
@@ -70,7 +70,7 @@ with open('compare_fixed_buffers_l8_2-3-7_a5_pgros.csv','r') as csvfile:
 
 
 #with open('./Data/compare_fixed_buffers_8-7_a5_pgros.csv','r') as csvfile:
-with open('compare_fixed_buffers_l8_2-4-6_a5_pgros.csv','r') as csvfile:
+with open('compare_fixed_buffers_l8_2-4-6_a1_pgros.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
@@ -81,7 +81,7 @@ with open('compare_fixed_buffers_l8_2-4-6_a5_pgros.csv','r') as csvfile:
 		#bfix4.append(int(row[7]))
 		
 #with open('./Data/compare_fixed_buffers_8-7_a5_pgros.csv','r') as csvfile:
-with open('compare_fixed_buffers_l8_2-5-5_a5_pgros.csv','r') as csvfile:
+with open('compare_fixed_buffers_l8_2-5-5_a1_pgros.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
@@ -92,7 +92,7 @@ with open('compare_fixed_buffers_l8_2-5-5_a5_pgros.csv','r') as csvfile:
 		#bfix4.append(int(row[7]))
 		
 #with open('./Data/compare_fixed_buffers_8-7_a5_pgros.csv','r') as csvfile:
-with open('compare_fixed_buffers_l8_4-4-4_a5_pgros.csv','r') as csvfile:
+with open('compare_fixed_buffers_l8_4-4-4_a1_pgros.csv','r') as csvfile:
 	plots=csv.reader(csvfile, delimiter=',')
 	#next(plots) #damit die erste zeile nicht eingelesen wird
 	for row in plots:
@@ -106,9 +106,9 @@ plt.plot(gen_prob9,mean9, label=r'4-4-4')
 plt.plot(gen_prob8,mean8, label=r'2-5-5')
 plt.plot(gen_prob7,mean7, label=r'2-4-6')
 plt.plot(gen_prob6,mean6, linestyle='dotted', label=r'2-3-7') #
-plt.plot(gen_prob5,mean5, linestyle='dashed', label=r'1-5-6') #
+#plt.plot(gen_prob5,mean5, linestyle='dashed', label=r'1-5-6') #
 plt.plot(gen_prob4,mean4, linestyle='dashdot', label=r'1-1-10') #
-plt.plot(null,null,'.', label=r'$a = 0.5$')
+plt.plot(null,null,'.', label=r'$a = 0.1$')
 
 
 
@@ -135,7 +135,7 @@ plt.legend(loc=1,frameon=False) #loc=4 fixiert die position
 plt.yscale('log')
 
 #plt.savefig("compare_fixed_buffers.pdf", dpi=150)
-plt.savefig("compare_fixed_buffers_l8_a5.pdf", bbox_inches='tight')
+plt.savefig("compare_fixed_buffers_l8_12_a1.pdf", bbox_inches='tight')
 
 plt.show()
 
