@@ -19,13 +19,13 @@ Goal of this program:
 #datap = [0.1] # np.linspace(0.05,0.1,51)
 #sw_prob_list = [0.5] #np.linspace(0.1,1,91)
 
-file_name = "saturation_parameters_diff001_p005-01.csv"
+file_name = "saturation_parameters_diff001_p005-01_a16.csv"
 element_numbers = 4
 
 
 with open('Data/infty_buffer3_p005-01.csv','r') as csvfile:
     plots=csv.reader(csvfile, delimiter=',')
-    for x in range(124):
+    for x in range(3*51):
         next(plots) #damit die erste zeile nicht eingelesen werden
     for row in plots:
         gen_prob = float(row[1])
