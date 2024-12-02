@@ -25,7 +25,8 @@ element_numbers = 4
 
 with open('Data/infty_buffer3_p005-01.csv','r') as csvfile:
     plots=csv.reader(csvfile, delimiter=',')
-    #next(plots) #damit die erste zeile nicht eingelesen werden
+    for x in range(124):
+        next(plots) #damit die erste zeile nicht eingelesen werden
     for row in plots:
         gen_prob = float(row[1])
         sw_prob = float(row[2])
