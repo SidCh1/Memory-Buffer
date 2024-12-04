@@ -44,7 +44,7 @@ plt.rcParams['font.size'] = '7' #default = 10
 
 """get data from file"""
 
-data = np.genfromtxt('saturation_parameters_diff001_p05-1_v5.csv',delimiter=',',usecols = (0,1,2,3,4,5,6,7,8))
+data = np.genfromtxt('saturation_parameters_diff001_p05-1_v6.csv',delimiter=',',usecols = (0,1,2,3,4,5,6,7,8))
 
 gen_prob=data[:,1]
 sw_prob =data[:,2]
@@ -79,8 +79,8 @@ ax1 = fig.add_subplot(121, projection='3d')
 #ax1.plot(gen_prob,sw_prob,afix,'.', label='a')
 #ax1.plot(gen_prob,sw_prob,bfix,'r+', label='b')
 #ax1.plot_surface(G, S, Mi, edgecolor='royalblue', lw=0.5, rstride=8, cstride=8, alpha=0.3)
-ax1.plot_surface(G, S, A, edgecolor='royalblue', lw=0.5, rstride=8, cstride=8, alpha=0.3)    
-#ax1.plot_surface(G, S, B, edgecolor='royalblue', lw=0.5, rstride=8, cstride=8, alpha=0.3)                            
+#ax1.plot_surface(G, S, A, edgecolor='royalblue', lw=0.5, rstride=8, cstride=8, alpha=0.3)    
+ax1.plot_surface(G, S, B, edgecolor='royalblue', lw=0.5, rstride=8, cstride=8, alpha=0.3)                            
 
 
 ax1.set_xlabel('p')
