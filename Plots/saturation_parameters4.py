@@ -55,7 +55,7 @@ with open('./Data/saturation_parameters_diff001_p05-1_v6.csv','r') as csvfile:
         else:
 
             
-            a = 10
+            a = 1
             b = 10000
             memory_numbers = [b,a,a,b,b,a,a,b]
             #print("new round: a=", a)
