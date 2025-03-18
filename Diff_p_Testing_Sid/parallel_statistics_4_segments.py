@@ -45,20 +45,35 @@ os.makedirs(output_dir, exist_ok=True)  # Create the directory if it doesn't exi
 
 # Define the different configurations as a list of dictionaries
 configurations = [
+    # {
+    #     "memory_numbers_list": [1, 1, 3, 3, 3, 3, 1, 1],
+    #     "segment_lengths": [10, 90, 90, 10],
+    #     "file_name": "compare_fixed_length_16-4_a22_10_90_13_200km.csv",
+    # },
+    # {
+    #     "memory_numbers_list": [2, 2, 2, 2, 2, 2, 2, 2],
+    #     "segment_lengths": [10, 90, 90, 10],
+    #     "file_name": "compare_fixed_length_16-4_a22_10_90_22_200km.csv",
+    # },
+    # {
+    #     "memory_numbers_list": [3, 3, 1, 1, 1, 1, 3, 3],
+    #     "segment_lengths": [10, 90, 90, 10],
+    #     "file_name": "compare_fixed_length_16-4_a22_10_90_31_200km.csv",
+    # },
     {
         "memory_numbers_list": [1, 1, 3, 3, 3, 3, 1, 1],
-        "segment_lengths": [10, 90, 90, 10],
-        "file_name": "compare_fixed_length_16-4_a22_10_90_13_200km.csv",
+        "segment_lengths": [1, 99, 99, 1],
+        "file_name": "compare_fixed_length_16-4_a22_1_99_13_200km.csv",
     },
     {
         "memory_numbers_list": [2, 2, 2, 2, 2, 2, 2, 2],
-        "segment_lengths": [10, 90, 90, 10],
-        "file_name": "compare_fixed_length_16-4_a22_10_90_22_200km.csv",
+        "segment_lengths": [1, 99, 99, 1],
+        "file_name": "compare_fixed_length_16-4_a22_1_99_22_200km.csv",
     },
     {
         "memory_numbers_list": [3, 3, 1, 1, 1, 1, 3, 3],
-        "segment_lengths": [10, 90, 90, 10],
-        "file_name": "compare_fixed_length_16-4_a22_10_90_31_200km.csv",
+        "segment_lengths": [1, 99, 99, 1],
+        "file_name": "compare_fixed_length_16-4_a22_1_99_31_200km.csv",
     },
 
 ]

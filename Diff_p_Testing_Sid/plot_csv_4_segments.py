@@ -91,17 +91,14 @@ if __name__ == "__main__":
     path = "/home/siddhu/Documents/Memory_Buffer_Feb_2025/Memory-Buffer/Diff_p_Testing_Sid/Data_200k_16b_4seg_a22_test_contrast_memory_dist"
     # List of CSV files
     csv_files = [
-        # 'compare_fixed_length_32-4_20_40_37.csv',
-        # 'compare_fixed_length_32-4_20_40.csv',
-        # 'compare_fixed_length_32-4_40_20_73.csv',
-        # "compare_fixed_length_32-4_a11_20_40_44_200km.csv",
-        # "compare_fixed_length_32-4_a11_20_40_37_200km.csv",
-        "compare_fixed_length_16-4_a22_10_90_13_200km.csv",
-        "compare_fixed_length_16-4_a22_10_90_31_200km.csv",
-        "compare_fixed_length_16-4_a22_10_90_22_200km.csv",
-        # "compare_fixed_length_32-8_a22_2222_15_35_400km.csv",
-        # "compare_fixed_length_32-8_a22_131_15_35_400km.csv",
-        # "compare_fixed_length_32-8_a22_313_15_35_400km.csv",
+        # "compare_fixed_length_16-4_a22_10_90_13_200km.csv",
+        # "compare_fixed_length_16-4_a22_10_90_31_200km.csv",
+        # "compare_fixed_length_16-4_a22_10_90_22_200km.csv",
+        "compare_fixed_length_16-4_a22_1_99_13_200km.csv",
+        "compare_fixed_length_16-4_a22_1_99_31_200km.csv",
+        "compare_fixed_length_16-4_a22_1_99_22_200km.csv",
+
+
     ]
 
     file_list = [os.path.join(path, file) for file in csv_files]
