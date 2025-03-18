@@ -26,13 +26,38 @@ def plot_csv_data(file_list):
         plt.plot(x, y, color=color, marker=marker, linestyle="-", markersize=6)
 
         # Add a legend entry
+        # plt.scatter(
+        #     [],
+        #     [],
+        #     color=color,
+        #     marker=marker,
+        #     label=f"memory_numbers_list={memory_numbers}, segment_lengths={segment_lengths}",
+            
+        # )
+        # plt.scatter(
+        #     [],
+        #     [],
+        #     color=color,
+        #     marker=marker,
+        #     label=f"memory_numbers_list={memory_numbers}\nsegment_lengths={segment_lengths}",
+        # )
+        
         plt.scatter(
-            [],
-            [],
-            color=color,
-            marker=marker,
-            label=f"memory_numbers_list={memory_numbers}, segment_lengths={segment_lengths}",
-        )
+        [],
+        [],
+        color=color,
+        marker=marker,
+        label=f"memory_numbers_list={memory_numbers}",
+    )
+    
+    plt.scatter(
+        [],
+        [],
+        color="none",  # Invisible marker
+        label=f"segment_lengths={segment_lengths}",  # Show only one segment length
+    )
+
+
 
     # Labels and title
     plt.xlabel("Swapping Probability")
@@ -41,6 +66,9 @@ def plot_csv_data(file_list):
 
     # Show legend
     plt.legend()
+    
+    # Save the figure as a PDF
+    plt.savefig("/home/siddhu/Documents/Memory_Buffer_Feb_2025/Memory-Buffer/Diff_p_Testing_Sid/Data_400k_32b_8seg_a22_test_contrast_memory_dist/plot.pdf", format="pdf")
 
     # Show the plot
     plt.show()
@@ -50,7 +78,9 @@ def plot_csv_data(file_list):
 if __name__ == "__main__":
     # Path to your CSV files
     # path = "/Users/thaslimjaglurbasheer/Documents/Siddhu/Memory_Buffer/memory-buffer/Diff_p_Testing_Sid"
-    path = "/home/siddhu/Documents/lina_project/memory-buffer/Diff_p_Testing_Sid/Data_test_dl"
+    
+
+    path = "/home/siddhu/Documents/Memory_Buffer_Feb_2025/Memory-Buffer/Diff_p_Testing_Sid/Data_400k_32b_8seg_a22_test_contrast_memory_dist"
     # List of CSV files
     csv_files = [
         # 'compare_fixed_length_32-4_20_40_37.csv',
@@ -58,12 +88,12 @@ if __name__ == "__main__":
         # 'compare_fixed_length_32-4_40_20_73.csv',
         # "compare_fixed_length_32-4_a11_20_40_44_200km.csv",
         # "compare_fixed_length_32-4_a11_20_40_37_200km.csv",
-        # "compare_fixed_length_32-4_a11_25_25_44_200km.csv",
-        # "compare_fixed_length_16-4_a11_25_25_44_200km.csv",
-        "compare_fixed_length_16-4_a22_25_25_44_100km.csv",
-        "compare_fixed_length_32-4_a22_25_25_44_200km.csv",
-        # "compare_fixed_length_32-8_a22_313_200km.csv",
-        # "compare_fixed_length_32-8_a22_2222_200km.csv",
+        "compare_fixed_length_32-8_a22_2222_10_40_04_400km.csv",
+        "compare_fixed_length_32-8_a22_131_10_40_04_400km.csv",
+        "compare_fixed_length_32-8_a22_313_10_40_04_400km.csv",
+        # "compare_fixed_length_32-8_a22_2222_15_35_400km.csv",
+        # "compare_fixed_length_32-8_a22_131_15_35_400km.csv",
+        # "compare_fixed_length_32-8_a22_313_15_35_400km.csv",
     ]
 
     file_list = [os.path.join(path, file) for file in csv_files]
